@@ -1,0 +1,140 @@
+{
+  "name": "electron-vite-react",
+  "description": "This Starter utilizes Electron, TypeScript, Vite, React, Tailwind CSS with twstyled CSS in JS. It tries to adhere to best practices.",
+  "version": "1.0.1",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf yarn.lock && rimraf ./**/.next && rimraf dist && rimraf ./**/out && rimraf {**/,}node_modules",
+    "dev": "cross-env NODE_ENV=development node -r esbuild-register ./scripts/dev.ts",
+    "preview": "cross-env NODE_ENV=production electron ./dist/main",
+    "dev:renderer": "vite",
+    "dev:main": "cross-env NODE_ENV=development node -r esbuild-register ./scripts/dev.ts",
+    "build": "rimraf dist && vite build && npm run prod:esbuild",
+    "prod:esbuild": "cross-env NODE_ENV=production node -r esbuild-register ./scripts/prod.ts",
+    "prod:tsc": "tsc --project ./src/main/tsconfig.json",
+    "publish": "concurrently \"npm:publish:mac\" \"npm:publish:win\"",
+    "publish:mac": "env-cmd -r ./.config/.env-secrets.json -e production electron-builder --macos",
+    "publish:linux": "electron-builder --linux dir",
+    "publish:win": "env-cmd -r ./.config/.env-secrets.json -e production electron-builder --win"
+  },
+  "dependencies": {
+    "electron-window-state": "^5.0.3",
+    "jsonfile": "^6.1.0",
+    "mkdirp": "^1.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ui": "workspace:*",
+    "universalify": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.9",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.1",
+    "chalk": "^5.0.1",
+    "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "electron": "^20.0.3",
+    "electron-builder": "^23.3.3",
+    "electron-notarize": "^1.2.1",
+    "env-cmd": "^10.1.0",
+    "esbuild": "^0.15.5",
+    "esbuild-register": "^3.3.3",
+    "eslint": "^8.22.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.9"
+  },
+  "author": "twstyled contributors",
+  "browserslist": [
+    "last 1 electron version"
+  ],
+  "build": {
+    "directories": {
+      "output": "dist",
+      "buildResources": "public"
+    },
+    "appId": "dev.twstyled.app",
+    "productName": "twstyled-app",
+    "afterSign": "scripts/notarize.js",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "extendInfo": {
+        "NSUserNotificationAlertStyle": "alert"
+      },
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": ".config/entitlements.mac.plist",
+      "entitlementsInherit": ".config/entitlements.mac.plist",
+      "publish": [
+        {
+          "provider": "generic",
+          "url": "https://files.twstyled.com/releases/${name}/${os}/"
+        }
+      ]
+    },
+    "dmg": {
+      "background": "public/dmgBackground.png",
+      "icon": "icon.icns",
+      "iconSize": 155,
+      "window": {
+        "width": 660,
+        "height": 400
+      },
+      "contents": [
+        {
+          "x": 123,
+          "y": 172
+        },
+        {
+          "x": 539,
+          "y": 168,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "publisherName": "twstyled contributors",
+      "sign": null,
+      "publish": [
+        {
+          "provider": "generic",
+          "url": "https://files.twstyled.com/releases/${name}/${os}/"
+        }
+      ]
+    },
+    "asar": false,
+    "extraMetadata": {
+      "main": "main/index.js"
+    },
+    "files": [
+      {
+        "filter": [
+          "package.json",
+          "tailwind.config.js"
+        ]
+      },
+      {
+        "from": "./dist",
+        "to": "./",
+        "filter": [
+          "index.html"
+        ]
+      },
+      {
+        "from": "./dist/main",
+        "to": "./main"
+      },
+      {
+        "from": "./dist/assets",
+        "to": "./assets"
+      }
+    ]
+  },
+  "workspaces": [
+    "lib-twstyled/packages/*"
+  ]
+}
