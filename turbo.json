@@ -11,5 +11,6 @@
     "dev": {
       "cache": false
     }
-  }
+  },
+  "globalDependencies": ["$CURSE_API_KEY", ".env"]
 }

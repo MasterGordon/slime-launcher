@@ -1,10 +1,10 @@
-import { ipcMain } from "electron-better-ipc";
+import {ipcMain} from 'electron-better-ipc';
 
 export const api = {
   print: (text: string) => {
     console.log(text);
   },
-  sum: (data: { a: number; b: number }) => {
+  sum: (data: {a: number; b: number}) => {
     return data.a + data.b;
   },
 };
@@ -16,6 +16,6 @@ type Event = {
 
 export type Api = typeof api;
 
-ipcMain.answerRenderer("api", async (event: Event) => {
+ipcMain.answerRenderer('api', async (event: Event) => {
   return api[event.type](event.data);
 });
