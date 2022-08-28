@@ -1,6 +1,8 @@
 import { app, BrowserWindow } from "electron";
 import type { BrowserWindowConstructorOptions } from "electron";
 import windowStateKeeper from "electron-window-state";
+// import "./api";
+import path from "path";
 
 const isDevelopment = !app.isPackaged;
 
@@ -18,7 +20,8 @@ function createWindow() {
       contextIsolation: true,
       devTools: isDevelopment,
       spellcheck: false,
-      nodeIntegration: true,
+      // nodeIntegration: true,
+      preload: path.join(__dirname + "/../dist-renderer/preload.js"),
     },
     show: false,
   };

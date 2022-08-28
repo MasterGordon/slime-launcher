@@ -1,7 +1,9 @@
-import { createServer, InlineConfig, Plugin } from "vite";
+import { createServer, InlineConfig, Plugin, build } from "vite";
 import chalk from "chalk";
 import config from "../vite.config";
+import preloadConfig from "../src/preload/vite.config";
 import { consoleViteMessagePrefix, srcPath } from "./common";
+import { resolve } from "path";
 
 function LoggerPlugin(): Plugin {
   return {
@@ -29,6 +31,18 @@ export default async function startViteServer(): Promise<() => Promise<void>> {
     server: { port: 3000 },
     plugins: [...(cfg.plugins ?? []), LoggerPlugin()],
   });
+
+  const preloadCfg = preloadConfig as InlineConfig;
+  await build({
+    ...preloadCfg,
+    build: {
+      ...cfg.build,
+      watch: {},
+    },
+    configFile: false,
+    plugins: [...(cfg.plugins ?? []), LoggerPlugin()],
+  });
+
   await server.listen();
   const address = server.httpServer.address();
   if (typeof address === "object") {

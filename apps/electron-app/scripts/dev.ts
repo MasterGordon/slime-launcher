@@ -12,7 +12,7 @@ import {
   startMessage,
   mainPath,
   outDir,
-  entryPath,
+  entryPaths,
 } from "./common";
 
 const chalk = require("chalk");
@@ -48,10 +48,10 @@ async function main() {
   // Start vite server
   viteClose = await startViteServer();
   // Start dev for main process
-  void esDev(reportError, buildStart, buildComplete, notFoundTSConfig);
+  esDev(reportError, buildStart, buildComplete, notFoundTSConfig);
 }
 
-void main();
+main();
 
 //
 // SUPPORTING BUILD SCRIPT
@@ -81,7 +81,7 @@ async function esDev(
   try {
     await esbuild.build({
       outdir: outDir,
-      entryPoints: [entryPath],
+      entryPoints: entryPaths,
       tsconfig: tsconfigPath,
       format: "cjs",
       logLevel: "silent",

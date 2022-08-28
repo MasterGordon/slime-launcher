@@ -12,7 +12,7 @@ import {
   CompileError,
   mainPath,
   outDirMain,
-  entryPath,
+  entryPaths,
 } from "./common";
 
 function reportError(errors: CompileError[]) {
@@ -70,7 +70,7 @@ async function esProd(
   try {
     await esbuild.build({
       outdir: outDirMain,
-      entryPoints: [entryPath],
+      entryPoints: entryPaths,
       tsconfig: tsconfigPath,
       format: "cjs",
       logLevel: "info",
