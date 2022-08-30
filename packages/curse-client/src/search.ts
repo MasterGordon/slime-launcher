@@ -1,4 +1,5 @@
-import { axiosClient } from "./axios-client";
+import { Axios } from "axios";
+import { SearchResults } from "./interface";
 
 export enum ModsSearchSortField {
   Featured = 1,
@@ -22,11 +23,21 @@ export enum ModLoaderType {
   Quilt = 5,
 }
 
+export enum ClassId {
+  Worlds = 17,
+  BukkitPlugins = 5,
+  Customization = 4546,
+  Modpacks = 4471,
+  ResourcePacks = 12,
+  Addons = 4559,
+  Mods = 6,
+}
+
 export interface SearchParameters {
   /** Filter by game id. */
   gameId: number;
   /** Filter by section id (discoverable via Categories) */
-  classId?: number;
+  classId?: ClassId;
   /** Filter by category id */
   categoryId?: number;
   /** Filter by game version string */
@@ -49,13 +60,19 @@ export interface SearchParameters {
   pageSize?: number;
 }
 
-export const search = async (query: SearchParameters) => {
+const defaultSearchParameters: Partial<SearchParameters> = {
+  sortOrder: "desc",
+};
+
+export const search = async (axiosClient: Axios, query: SearchParameters) => {
   const params = new URLSearchParams();
-  Object.entries(query).forEach(([key, value]) => {
-    params.append(key, value);
-  });
-  const response = await axiosClient.get(
-    `/v1/mods/search?${params.toString()}`
+  Object.entries({ ...defaultSearchParameters, ...query }).forEach(
+    ([key, value]) => {
+      params.append(key, String(value));
+    }
+  );
+  const response = await axiosClient.get<SearchResults>(
+    `/mods/search?${params.toString()}`
   );
   return response.data;
 };
