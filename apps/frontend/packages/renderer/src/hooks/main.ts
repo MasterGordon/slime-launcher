@@ -17,6 +17,13 @@ export const useMainQuery = <Type extends QueryType>(type: Type, params: QueryPa
   return useQuery([type], () => api.query(type, params));
 };
 
-export const useMainMutation = <Type extends MutationType>(type: Type) => {
-  return useMutation((params: MutationParams<Type>) => api.mutate(type, params));
+type OnMutationSuccess = (queryClient: QueryClient) => void;
+
+export const useMainMutation = <Type extends MutationType>(
+  type: Type,
+  onSuccess?: OnMutationSuccess,
+) => {
+  return useMutation((params: MutationParams<Type>) => api.mutate(type, params), {
+    onSuccess: onSuccess ? () => onSuccess(queryClient) : undefined,
+  });
 };

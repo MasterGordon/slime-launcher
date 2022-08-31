@@ -1,14 +1,14 @@
 import getAppData from '../utils/get-app-data';
 import path from 'path';
 import fs from 'fs-extra';
-import {Account} from './Account';
+import type {Account} from './Account';
 
 const getAccountsFilePath = (): string => {
   const appData = getAppData();
   return path.join(appData, 'accounts.json');
 };
 
-export const getAccounts = async (_?: never): Promise<Account[]> => {
+export const getAccounts = async (): Promise<Account[]> => {
   const filePath = getAccountsFilePath();
   if (!fs.existsSync(filePath)) {
     return [];

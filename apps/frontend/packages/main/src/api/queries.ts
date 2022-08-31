@@ -12,6 +12,13 @@ type Event = {
 
 export type Queries = typeof queries;
 
-ipcMain.answerRenderer('api', async (event: Event) => {
-  return queries[event.type](event.data);
-});
+export const registerQueryIpc = (): void => {
+  ipcMain.answerRenderer('query', async (event: Event) => {
+    // @ts-expect-error Fix empty params
+    const result = await queries[event.type](event.data);
+    if (import.meta.env.DEV) {
+      console.log(`[query] ${event.type}`, event.data, '=>', result);
+    }
+    return result;
+  });
+};

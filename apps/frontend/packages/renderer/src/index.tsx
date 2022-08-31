@@ -1,15 +1,13 @@
 import {createRoot} from 'react-dom/client';
-import {api} from '#preload';
-import {Box, ChakraProvider, Grid, HStack, Spacer} from '@chakra-ui/react';
+import {Box, Grid, HStack, Spacer} from '@chakra-ui/react';
+import App from './App';
+import {Acc} from './Acc';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(document.getElementById('app')!);
 
-api.invoke('sum', {a: 1, b: 2}).then(sum => {
-  console.log(sum);
-});
 root.render(
-  <ChakraProvider>
+  <App>
     <Grid
       gridTemplateRows="4em 1fr"
       height="100vh"
@@ -18,6 +16,7 @@ root.render(
         <Box>GLauncher</Box>
         <Spacer />
       </HStack>
+      <Acc />
     </Grid>
-  </ChakraProvider>,
+  </App>,
 );

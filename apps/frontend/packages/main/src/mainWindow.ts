@@ -1,7 +1,7 @@
 import {app, BrowserWindow} from 'electron';
 import {join} from 'path';
 import {URL} from 'url';
-import './api';
+import {registerQueryIpc, registerMutationIpc} from './api';
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
@@ -34,6 +34,8 @@ async function createWindow() {
       : new URL('../renderer/dist/index.html', 'file://' + __dirname).toString();
 
   await browserWindow.loadURL(pageUrl);
+  registerMutationIpc();
+  registerQueryIpc();
 
   return browserWindow;
 }

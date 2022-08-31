@@ -13,6 +13,11 @@ type Event = {
 
 export type Mutations = typeof mutate;
 
-ipcMain.answerRenderer('api', async (event: Event) => {
-  return mutate[event.type](event.data);
-});
+export const registerMutationIpc = (): void => {
+  ipcMain.answerRenderer('mutate', async (event: Event) => {
+    if (import.meta.env.DEV) {
+      console.log(`[mutate] ${event.type}`, event.data);
+    }
+    return mutate[event.type](event.data);
+  });
+};
