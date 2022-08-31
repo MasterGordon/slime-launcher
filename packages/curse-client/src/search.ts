@@ -1,5 +1,5 @@
 import { Axios } from "axios";
-import { SearchResults } from "./interface";
+import { ModLoaderType, SearchResults } from "./interface";
 
 export enum ModsSearchSortField {
   Featured = 1,
@@ -13,15 +13,6 @@ export enum ModsSearchSortField {
 }
 
 export type SortOrder = "asc" | "desc";
-
-export enum ModLoaderType {
-  Any = 0,
-  Forge = 1,
-  Cauldron = 2,
-  LiteLoader = 3,
-  Fabric = 4,
-  Quilt = 5,
-}
 
 export enum ClassId {
   Worlds = 17,

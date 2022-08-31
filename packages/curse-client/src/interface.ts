@@ -79,7 +79,7 @@ export interface Module {
   fingerprint: any;
 }
 
-export interface LatestFile {
+export interface ModFile {
   id: number;
   gameId: number;
   modId: number;
@@ -112,7 +112,7 @@ export interface LatestFilesIndex {
   modLoader?: number;
 }
 
-export interface SearchResult {
+export interface Mod {
   id: number;
   gameId: number;
   name: string;
@@ -129,7 +129,7 @@ export interface SearchResult {
   logo: Logo;
   screenshots: Screenshot[];
   mainFileId: number;
-  latestFiles: LatestFile[];
+  latestFiles: ModFile[];
   latestFilesIndexes: LatestFilesIndex[];
   dateCreated: string;
   dateModified: string;
@@ -148,6 +148,15 @@ export interface Pagination {
 }
 
 export interface SearchResults {
-  data: SearchResult[];
+  data: Mod[];
   pagination: Pagination;
+}
+
+export enum ModLoaderType {
+  Any = 0,
+  Forge = 1,
+  Cauldron = 2,
+  LiteLoader = 3,
+  Fabric = 4,
+  Quilt = 5,
 }

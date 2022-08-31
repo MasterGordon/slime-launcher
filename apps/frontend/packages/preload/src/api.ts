@@ -1,11 +1,16 @@
 import {ipcRenderer} from 'electron-better-ipc';
-import type {Api} from '../../main/src/api';
+import type {Queries, Mutations} from '../../main/src/api';
+
+export type QueryType = keyof Queries;
+export type MutationType = keyof Mutations;
+export type QueryParams<T extends QueryType> = Parameters<Queries[T]>[0];
+export type MutationParams<T extends MutationType> = Parameters<Mutations[T]>[0];
 
 export const api = {
-  print: (text: string) => {
-    console.log(text);
+  query: async <Type extends QueryType>(type: Type, data: QueryParams<Type>) => {
+    return await ipcRenderer.callMain('query', {type, data});
   },
-  invoke: async <Type extends keyof Api>(type: Type, data: Parameters<Api[Type]>[0]) => {
-    return await ipcRenderer.callMain('api', {type, data});
+  mutate: async <Type extends MutationType>(type: Type, data: MutationParams<Type>) => {
+    return await ipcRenderer.callMain('mutate', {type, data});
   },
 };
