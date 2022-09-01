@@ -49,6 +49,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@tanstack/react-query": "^4.2.3",
+    "axios": "^0.27.2",
     "curse-client": "workspace:*",
     "electron-better-ipc": "^2.0.1",
     "electron-updater": "5.2.1",

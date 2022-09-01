@@ -28,6 +28,9 @@ const ManageAccounts: React.FC<ManageAccountsProps> = (props) => {
   const addMicrosoftAccount = useMainMutation("addMicrosoftAccount", (qc) => {
     qc.invalidateQueries(["getAccounts"]);
   });
+  const removeAccount = useMainMutation("removeAccount", (qc) => {
+    qc.invalidateQueries(["getAccounts"]);
+  });
   const {
     onOpen: onOpenAddOfflineAccount,
     isOpen: isAddOfflineAccountOpen,
@@ -59,7 +62,13 @@ const ManageAccounts: React.FC<ManageAccountsProps> = (props) => {
                   />
                   <chakra.span>{account.name}</chakra.span>
                   <Spacer />
-                  <Button colorScheme="red" variant="outline">
+                  <Button
+                    colorScheme="red"
+                    variant="outline"
+                    onClick={() => {
+                      removeAccount.mutate(account.uuid);
+                    }}
+                  >
                     Remove
                   </Button>
                 </HStack>

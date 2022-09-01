@@ -24,6 +24,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.33.1
       '@typescript-eslint/parser': ^5.35.1
       '@vitejs/plugin-react': ^2.0.1
+      axios: ^0.27.2
       cross-env: 7.0.3
       curse-client: workspace:*
       electron: 20.0.3
@@ -49,6 +50,7 @@ importers:
       '@emotion/react': 11.10.4_ug65io7jkbhmo4fihdmbrh3ina
       '@emotion/styled': 11.10.4_4qlqmspomoqctzkikkhvhnn3qu
       '@tanstack/react-query': 4.2.3_biqbaboplfbrettd7655fr4n2y
+      axios: 0.27.2
       curse-client: link:../../packages/curse-client
       electron-better-ipc: 2.0.1
       electron-updater: 5.2.1

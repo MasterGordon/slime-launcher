@@ -4,6 +4,7 @@ import fs from "fs-extra";
 import type { Account } from "./Account";
 import { Authenticator } from "minecraft-launcher-core";
 import msmc from "msmc";
+import axios from "axios";
 
 const getAccountsFilePath = (): string => {
   const appData = getAppData();
@@ -41,6 +42,12 @@ export const removeAccount = async (uuid: string): Promise<void> => {
 
 export const addOfflineAccount = async (username: string) => {
   const account = await Authenticator.getAuth(username);
+  const uuid = await axios
+    .get("https://api.mojang.com/users/profiles/minecraft/" + username)
+    .then((res) => res.data.id);
+  account.uuid = uuid;
+  account.access_token = uuid;
+  account.client_token = uuid;
   addAccount(account);
 };
 
