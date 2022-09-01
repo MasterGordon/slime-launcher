@@ -1,28 +1,28 @@
-import {app} from 'electron';
-import './security-restrictions';
-import {restoreOrCreateWindow} from '/@/mainWindow';
+import { app } from "electron";
+import "./security-restrictions";
+import { restoreOrCreateWindow } from "/@/mainWindow";
 
 const isSingleInstance = app.requestSingleInstanceLock();
 if (!isSingleInstance) {
   app.quit();
   process.exit(0);
 }
-app.on('second-instance', restoreOrCreateWindow);
+app.on("second-instance", restoreOrCreateWindow);
 
 app.disableHardwareAcceleration();
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
-app.on('activate', restoreOrCreateWindow);
+app.on("activate", restoreOrCreateWindow);
 
 app
   .whenReady()
   .then(restoreOrCreateWindow)
-  .catch(e => console.error('Failed create window:', e));
+  .catch((e) => console.error("Failed create window:", e));
 
 /**
  * Install Vue.js or any other extension in development mode only.
@@ -45,7 +45,7 @@ app
 if (import.meta.env.PROD) {
   app
     .whenReady()
-    .then(() => import('electron-updater'))
-    .then(({autoUpdater}) => autoUpdater.checkForUpdatesAndNotify())
-    .catch(e => console.error('Failed check updates:', e));
+    .then(() => import("electron-updater"))
+    .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
+    .catch((e) => console.error("Failed check updates:", e));
 }

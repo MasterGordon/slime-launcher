@@ -1,2 +1,2 @@
-export * from './manage-accounts';
-export * from './Account';
+export * from "./manage-accounts";
+export * from "./Account";

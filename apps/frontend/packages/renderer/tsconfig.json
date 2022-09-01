@@ -11,11 +11,15 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "#preload": ["../preload/src/index"],
-      "/@/*": ["./src/*"]
+      "#preload": ["../preload/src/index"]
     },
     "lib": ["ESNext", "dom", "dom.iterable"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "types/**/*.d.ts", "../../types/**/*.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "types/**/*.d.ts",
+    "../../types/**/*.d.ts"
+  ],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

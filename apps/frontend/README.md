@@ -1,9 +1,8 @@
 # Vite Electron Builder Boilerplate
 
-----
+---
 
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
-----
+## [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
 
 [![GitHub issues by-label](https://img.shields.io/github/issues/cawa-93/vite-electron-builder/help%20wanted?label=issues%20need%20help&logo=github)](https://github.com/cawa-93/vite-electron-builder/issues?q=label%3A%22help+wanted%22+is%3Aopen+is%3Aissue)
 [![Required Node.JS >= v16.13](https://img.shields.io/static/v1?label=node&message=%3E=16.13&logo=node.js&color)](https://nodejs.org/about/releases/)
@@ -186,11 +185,11 @@ to export the method from the preload. The `exposeInMainWorld` will be called au
 
 ```ts
 // preload/index.ts
-import {writeFile} from 'fs'
+import { writeFile } from "fs";
 
 // Everything you exported from preload/index.ts may be called in renderer
 export function getData() {
-  return /* ... */
+  return; /* ... */
 }
 ```
 
@@ -198,8 +197,8 @@ Now you can import and call the method in renderer
 
 ```ts
 // renderer/somewere.component.ts
-import {getData} from '#preload'
-const dataFromFS = getData()
+import { getData } from "#preload";
+const dataFromFS = getData();
 ```
 
 [Read more about Security Considerations](https://www.electronjs.org/docs/tutorial/context-isolation#security-considerations)
@@ -273,27 +272,15 @@ will not.
 
 See [Contributing Guide](contributing.md).
 
-
 [vite]: https://github.com/vitejs/vite/
-
 [electron]: https://github.com/electron/electron
-
 [electron-builder]: https://github.com/electron-userland/electron-builder
-
 [vue]: https://github.com/vuejs/vue-next
-
 [vue-router]: https://github.com/vuejs/vue-router-next/
-
 [typescript]: https://github.com/microsoft/TypeScript/
-
 [playwright]: https://playwright.dev
-
 [vitest]: https://vitest.dev
-
 [vue-tsc]: https://github.com/johnsoncodehk/vue-tsc
-
 [eslint-plugin-vue]: https://github.com/vuejs/eslint-plugin-vue
-
 [cawa-93-github]: https://github.com/cawa-93/
-
 [cawa-93-sponsor]: https://www.patreon.com/Kozack/

@@ -1,9 +1,16 @@
-import {ipcMain} from 'electron-better-ipc';
-import {addAccount, removeAccount} from '../account';
+import { ipcMain } from "electron-better-ipc";
+import {
+  removeAccount,
+  addOfflineAccount,
+  addMicrosoftAccount,
+  setActiveAccount,
+} from "../account";
 
 export const mutate = {
-  addAccount,
+  addMicrosoftAccount,
   removeAccount,
+  addOfflineAccount,
+  setActiveAccount,
 };
 
 type Event = {
@@ -14,7 +21,7 @@ type Event = {
 export type Mutations = typeof mutate;
 
 export const registerMutationIpc = (): void => {
-  ipcMain.answerRenderer('mutate', async (event: Event) => {
+  ipcMain.answerRenderer("mutate", async (event: Event) => {
     if (import.meta.env.DEV) {
       console.log(`[mutate] ${event.type}`, event.data);
     }

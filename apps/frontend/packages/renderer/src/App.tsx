@@ -1,12 +1,20 @@
-import {ChakraProvider} from '@chakra-ui/react';
-import {QueryClientProvider} from '@tanstack/react-query';
-import type {PropsWithChildren} from 'react';
-import {queryClient} from './hooks/main';
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { QueryClientProvider } from "@tanstack/react-query";
+import type { PropsWithChildren } from "react";
+import { queryClient } from "./hooks/main";
 
-const App: React.FC<PropsWithChildren> = ({children}) => {
+const App: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider>{children}</ChakraProvider>
+      <ChakraProvider
+        theme={extendTheme({
+          config: {
+            initialColorMode: "dark",
+          },
+        })}
+      >
+        {children}
+      </ChakraProvider>
     </QueryClientProvider>
   );
 };
