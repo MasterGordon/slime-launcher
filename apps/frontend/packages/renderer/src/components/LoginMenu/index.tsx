@@ -8,7 +8,6 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Spinner,
   useDisclosure,
 } from "@chakra-ui/react";
 import { MdExpandMore, MdManageAccounts } from "react-icons/md";
@@ -21,7 +20,7 @@ const LoginMenu = () => {
     qc.invalidateQueries(["getAccounts"]);
   });
   const { isOpen, onClose, onOpen } = useDisclosure();
-  if (!data) return <Spinner />;
+  if (!data) return null;
   const { accounts, activeAccount } = data;
   const selectedAccount = accounts.find(
     (account) => account.uuid === activeAccount,

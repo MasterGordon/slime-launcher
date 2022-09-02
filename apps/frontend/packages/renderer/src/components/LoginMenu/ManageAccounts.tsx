@@ -1,7 +1,6 @@
 import {
   Button,
   chakra,
-  Grid,
   HStack,
   Modal,
   ModalBody,
@@ -56,6 +55,7 @@ const ManageAccounts: React.FC<ManageAccountsProps> = (props) => {
                   background={
                     account.uuid === activeAccount ? "gray.600" : undefined
                   }
+                  key={account.uuid}
                 >
                   <chakra.img
                     src={"https://visage.surgeplay.com/face/32/" + account.uuid}

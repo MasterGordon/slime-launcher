@@ -14,7 +14,7 @@ export const createCurseClient = (options: CreateClientOptions) => {
   const { apiKey } = options;
   const headers = {} as Record<string, string>;
   if (apiKey) {
-    headers["X-api-key"] = apiKey;
+    headers["x-api-key"] = apiKey;
   }
   const axiosClient = setupCache(
     axios.create({

@@ -2,10 +2,12 @@ import { app, BrowserWindow } from "electron";
 import { join } from "path";
 import { URL } from "url";
 import { registerQueryIpc, registerMutationIpc } from "./api";
+import { generateSettings } from "./settings";
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
+    title: "GLauncher",
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -13,14 +15,13 @@ async function createWindow() {
       webviewTag: false,
       preload: join(app.getAppPath(), "packages/preload/dist/index.cjs"),
     },
+    minWidth: 1000,
+    minHeight: 600,
   });
+  browserWindow.removeMenu();
 
   browserWindow.on("ready-to-show", () => {
     browserWindow?.show();
-
-    if (import.meta.env.DEV) {
-      browserWindow?.webContents.openDevTools();
-    }
   });
 
   /**
@@ -39,6 +40,7 @@ async function createWindow() {
   await browserWindow.loadURL(pageUrl);
   registerMutationIpc();
   registerQueryIpc();
+  void generateSettings();
 
   return browserWindow;
 }
