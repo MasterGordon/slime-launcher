@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setupCache } from "axios-cache-interceptor";
 import { getMod } from "./get-mod";
 import { getModDescription } from "./get-mod-description";
 import { getModFiles } from "./get-mod-files";
@@ -15,10 +16,15 @@ export const createCurseClient = (options: CreateClientOptions) => {
   if (apiKey) {
     headers["X-api-key"] = apiKey;
   }
-  const axiosClient = axios.create({
-    baseURL: "https://api.curse.tools/v1/cf",
-    headers,
-  });
+  const axiosClient = setupCache(
+    axios.create({
+      baseURL: "https://api.curse.tools/v1/cf",
+      headers,
+    }),
+    {
+      ttl: 1000 * 60 * 15,
+    }
+  );
   return {
     search: search.bind(null, axiosClient),
     getMod: getMod.bind(null, axiosClient),
