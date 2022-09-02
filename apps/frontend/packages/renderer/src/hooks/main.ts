@@ -1,3 +1,4 @@
+import type { UseQueryResult } from "@tanstack/react-query";
 import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { api } from "#preload";
 import type {
@@ -5,6 +6,7 @@ import type {
   MutationType,
   QueryParams,
   MutationParams,
+  Queries,
 } from "../../../preload/src/api";
 
 export const queryClient = new QueryClient({
@@ -20,11 +22,18 @@ export const queryClient = new QueryClient({
   },
 });
 
+type UseQueryOptions = Parameters<typeof useQuery>[2];
+
 export const useMainQuery = <Type extends QueryType>(
   type: Type,
   params: QueryParams<Type>,
+  options?: UseQueryOptions,
 ) => {
-  return useQuery([type], () => api.query(type, params));
+  return useQuery(
+    [type],
+    () => api.query(type, params),
+    options,
+  ) as UseQueryResult<Awaited<ReturnType<Queries[Type]>>>;
 };
 
 type OnMutationSuccess = (queryClient: QueryClient) => void;

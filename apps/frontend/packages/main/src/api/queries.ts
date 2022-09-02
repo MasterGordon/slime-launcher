@@ -1,12 +1,13 @@
 import { ipcMain } from "electron-better-ipc";
 import { getAccounts } from "../account";
 import { downloadStatus } from "downloader";
-import { validateJava } from "../settings";
+import { getSettings, validateJava } from "../settings";
 
 export const queries = {
   getAccounts,
   downloadStatus: () => downloadStatus,
   validateJava,
+  getSettings,
 };
 
 type Event = {

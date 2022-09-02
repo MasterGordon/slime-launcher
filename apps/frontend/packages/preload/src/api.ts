@@ -7,6 +7,7 @@ export type QueryParams<T extends QueryType> = Parameters<Queries[T]>[0];
 export type MutationParams<T extends MutationType> = Parameters<
   Mutations[T]
 >[0];
+export type { Queries, Mutations } from "../../main/src/api";
 
 export const api = {
   query: async <Type extends QueryType>(

@@ -15,6 +15,12 @@ export const downloadStatus: DownloadStatus = {
   current: "",
 };
 
+export const resetDownloadStatus = () => {
+  downloadStatus.progress = 0;
+  downloadStatus.goal = 0;
+  downloadStatus.current = "";
+};
+
 export const downloadMultipleFiles = async (
   urls: string[],
   targetDir: string,

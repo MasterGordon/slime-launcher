@@ -3,9 +3,9 @@ import path from "path";
 import getAppData from "../utils/get-app-data";
 import fs from "fs-extra";
 import { spawn } from "child_process";
-import { globby } from "globby";
 import unpack from "unpack";
-import { downloadFile } from "downloader";
+import glob from "glob";
+import { downloadFile, resetDownloadStatus } from "downloader";
 import { updateSettings } from "./manage-settings";
 
 const getOsName = () => {
@@ -34,10 +34,14 @@ const getDownloadFile = (version: number) => {
   return path.join(javaPath, "cache", `jre-${version}${getDownloadExt()}`);
 };
 
-export const validateJava = async (
-  version: number,
-  executable = "java",
-): Promise<boolean> => {
+export const validateJava = async ({
+  version,
+  executable,
+}: {
+  version: number;
+  executable: string;
+}): Promise<boolean> => {
+  console.log("Validating java", version, executable);
   if (!(await fs.pathExists(executable))) return false;
   return new Promise<boolean>((resolve) => {
     const process = spawn(executable, ["-version"]);
@@ -70,7 +74,7 @@ const getJavaVersionPath = async (version: number): Promise<string> => {
   const globPattern = path.posix
     .join(getJavaPath(), `jre-${version}`, "**", "bin", "java{.exe,}")
     .replace(/\\/g, "/");
-  const [javaPath] = await globby(globPattern);
+  const [javaPath] = glob.sync(globPattern);
   return javaPath;
 };
 
@@ -81,14 +85,22 @@ const downloadJava = async (version: number): Promise<void> => {
   await downloadFile(
     `https://api.adoptium.net/v3/binary/latest/${version}/ga/${osName}/${os.arch()}/jre/hotspot/normal/eclipse?project=jdk`,
     targetFile,
+    true,
   );
 };
 
 export const setupJava = async (version: number) => {
-  if (!(await validateJava(version, await getJavaVersionPath(version)))) {
+  resetDownloadStatus();
+  if (
+    !(await validateJava({
+      version,
+      executable: await getJavaVersionPath(version),
+    }))
+  ) {
     await downloadJava(version);
     await installJava(version);
   }
+  console.log("updating settings");
   await updateSettings({
     javaPath: {
       [version]: await getJavaVersionPath(version),
