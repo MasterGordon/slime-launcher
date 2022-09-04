@@ -86,7 +86,6 @@ const ManageAccounts: React.FC<ManageAccountsProps> = (props) => {
 
           <ModalFooter justifyContent="start">
             <Button
-              colorScheme="blue"
               mr={3}
               onClick={() => addMicrosoftAccount.mutate(undefined)}
               size="sm"

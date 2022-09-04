@@ -42,8 +42,8 @@ export const generateSettings = async () => {
 
 export const getSettings = async (): Promise<Settings> => {
   const settingsPath = await getSettingsPath();
-  const settingsData: unknown = await fs.readJson(settingsPath);
   try {
+    const settingsData: unknown = await fs.readJson(settingsPath);
     return settingsSchema.parse(settingsData);
   } catch (e) {
     // fallback to default settings when the file is corrupted

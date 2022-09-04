@@ -7,7 +7,7 @@ const getAppData = (): string => {
     (process.platform == "darwin"
       ? process.env.HOME + "/Library/Preferences"
       : process.env.HOME + "/.local/share");
-  const appName = "glauncher";
+  const appName = "slime-launcher";
 
   const appData = path.join(systemAppData, appName).replace(/\\/g, "/");
   fs.ensureDir(appData);

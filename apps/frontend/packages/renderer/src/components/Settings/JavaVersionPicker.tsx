@@ -50,6 +50,8 @@ const JavaVersionPicker: React.FC<JavaVersionPickerProps> = (props) => {
       setJavaPathInput(javaPath);
     }
   }, [javaPath]);
+  console.log(downloadStatus);
+  console.log(settings);
   if (!settings || !downloadStatus) return null;
 
   const save = async () => {
@@ -85,7 +87,7 @@ const JavaVersionPicker: React.FC<JavaVersionPickerProps> = (props) => {
       <FormControl isInvalid={isValid === false}>
         <FormLabel>
           Java {version} executable path{" "}
-          <Button size="sm" onClick={autoSetup}>
+          <Button size="xs" onClick={autoSetup}>
             Auto Setup
           </Button>
         </FormLabel>
@@ -96,7 +98,7 @@ const JavaVersionPicker: React.FC<JavaVersionPickerProps> = (props) => {
             value={javaPathInput}
           />
           <InputRightElement>
-            <IconButton aria-label="Save" onClick={save}>
+            <IconButton aria-label="Save" onClick={save} variant="ghost">
               {isValid ? (
                 <Icon as={MdCheckCircleOutline} fill="green.400" />
               ) : (

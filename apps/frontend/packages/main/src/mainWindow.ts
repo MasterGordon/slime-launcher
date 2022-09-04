@@ -7,7 +7,7 @@ import { generateSettings } from "./settings";
 async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
-    title: "GLauncher",
+    title: "Slime Launcher",
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -18,7 +18,8 @@ async function createWindow() {
     minWidth: 1000,
     minHeight: 600,
   });
-  browserWindow.removeMenu();
+
+  if (process.env.NODE_ENV !== "development") browserWindow.removeMenu();
 
   browserWindow.on("ready-to-show", () => {
     browserWindow?.show();

@@ -17,7 +17,7 @@ const App: React.FC<PropsWithChildren> = ({ children }) => {
               initialColorMode: "dark",
             },
           },
-          withDefaultColorScheme({ colorScheme: "teal" }),
+          withDefaultColorScheme({ colorScheme: "green" }),
         )}
       >
         {children}
