@@ -6,7 +6,7 @@
       "outputs": ["dist/**", ".next/**"]
     },
     "compile": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^compile"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
@@ -15,6 +15,5 @@
     "dev": {
       "cache": false
     }
-  },
-  "globalDependencies": ["$CURSE_API_KEY", ".env"]
+  }
 }

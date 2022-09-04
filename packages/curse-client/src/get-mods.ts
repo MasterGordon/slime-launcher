@@ -1,5 +1,5 @@
-import { Axios } from "axios";
-import { Mod } from "./interface";
+import type { Axios } from "axios";
+import type { Mod } from "./interface";
 
 export const getMods = async (axiosClient: Axios, modIds: number[]) => {
   const response = await axiosClient.post<{ data: Mod[] }>(`/mods`, {

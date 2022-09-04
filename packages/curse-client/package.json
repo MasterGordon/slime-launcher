@@ -5,7 +5,7 @@
   "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.ts*"
+    "lint": "eslint src/*.ts*"
   },
   "devDependencies": {
     "@types/node": "^18.7.13",

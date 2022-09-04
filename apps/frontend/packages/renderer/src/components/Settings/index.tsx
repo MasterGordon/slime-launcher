@@ -1,12 +1,10 @@
 import {
-  Flex,
   Icon,
   IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalHeader,
   ModalOverlay,
   Tab,
   TabList,

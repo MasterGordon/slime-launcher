@@ -5,7 +5,7 @@
   "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.ts*"
+    "lint": "eslint"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.0",

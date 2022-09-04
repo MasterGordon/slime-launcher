@@ -1,5 +1,5 @@
-import { Axios } from "axios";
-import { ModLoaderType, SearchResults } from "./interface";
+import type { Axios } from "axios";
+import type { ModLoaderType, SearchResults } from "./interface";
 
 export enum ModsSearchSortField {
   Featured = 1,

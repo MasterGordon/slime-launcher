@@ -24,7 +24,7 @@ export const resetDownloadStatus = () => {
 export const downloadMultipleFiles = async (
   urls: string[],
   targetDir: string,
-  maxConcurrent: number = 3
+  maxConcurrent = 3
 ) => {
   const pool = new PromisePool().for(urls).withConcurrency(maxConcurrent);
   downloadStatus.goal = urls.length;

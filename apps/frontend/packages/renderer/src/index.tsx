@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { Box, Grid, Heading, HStack, Spacer } from "@chakra-ui/react";
+import { Grid, Heading, HStack, Spacer } from "@chakra-ui/react";
 import App from "./App";
 import LoginMenu from "./components/LoginMenu";
 import Settings from "./components/Settings";

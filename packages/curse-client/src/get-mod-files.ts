@@ -1,5 +1,5 @@
-import { Axios } from "axios";
-import { ModFile, ModLoaderType, Pagination } from "./interface";
+import type { Axios } from "axios";
+import type { ModFile, ModLoaderType, Pagination } from "./interface";
 
 export interface ModFileParams {
   gameVersion?: string;

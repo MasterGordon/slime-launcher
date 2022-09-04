@@ -76,7 +76,7 @@ export interface Dependency {
 
 export interface Module {
   name: string;
-  fingerprint: any;
+  fingerprint: unknown;
 }
 
 export interface ModFile {
@@ -98,7 +98,7 @@ export interface ModFile {
   dependencies: Dependency[];
   alternateFileId: number;
   isServerPack: boolean;
-  fileFingerprint: any;
+  fileFingerprint: unknown;
   modules: Module[];
   serverPackFileId?: number;
 }

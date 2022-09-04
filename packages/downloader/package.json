@@ -5,7 +5,7 @@
   "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.ts*"
+    "lint": "eslint src"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
