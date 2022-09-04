@@ -4,6 +4,7 @@
  *  ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs
  */
 
+process.env.ELECTRON_RUN_AS_NODE = 1;
 import {writeFileSync} from 'fs';
 import path from 'path';
 

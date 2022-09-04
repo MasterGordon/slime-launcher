@@ -13,8 +13,8 @@
     "@types/node": "^18.7.13",
     "@types/tar": "^6.1.2",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
+    "eslint-config-custom": "*",
+    "tsconfig": "*",
     "typescript": "^4.5.2"
   },
   "dependencies": {
