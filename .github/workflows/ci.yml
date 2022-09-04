@@ -1,0 +1,44 @@
+name: CI
+ 
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+ 
+jobs:
+  build:
+      name: Build and Test
+      timeout-minutes: 15
+      runs-on: ubuntu-latest
+ 
+      steps:
+        - name: Check out code
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 2
+ 
+        - name: Setup Node.js environment
+          uses: actions/setup-node@v2
+          with:
+            node-version: 16
+            cache: 'yarn'
+ 
+        - name: Install dependencies
+          run: yarn
+ 
+        - name: Build
+          run: yarn build
+ 
+        - name: lint
+          run: yarn lintd
+ 
+        - name: compile
+          run: yarn compile
+        - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v3.1.0
+          with:
+    # Artifact name
+            name: Linux build# optional, default is artifact
+    # A file, directory or wildcard pattern that describes what to upload
+            path: apps/frontend/dist/linux-unpacked
