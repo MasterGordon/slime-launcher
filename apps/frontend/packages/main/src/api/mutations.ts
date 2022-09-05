@@ -4,8 +4,9 @@ import {
   addOfflineAccount,
   addMicrosoftAccount,
   setActiveAccount,
-} from "../account";
-import { setupJava, updateSettings } from "../settings";
+  setupJava,
+  updateSettings,
+} from "piston";
 
 export const mutate = {
   addMicrosoftAccount,

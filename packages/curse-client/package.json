@@ -5,7 +5,8 @@
   "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/*.ts*"
+    "lint": "eslint src/*.ts*",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^18.7.13",

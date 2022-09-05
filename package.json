@@ -11,6 +11,7 @@
     "compile": "turbo run compile",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
     "format": "prettier --write \"*/*.{ts,tsx,md}\""
   },
   "devDependencies": {

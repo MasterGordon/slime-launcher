@@ -1,3 +1,5 @@
+import type { ModLoaderType } from "curse-client";
+
 export interface InstanceMod {
   modId: number;
   fileId: number;
@@ -10,6 +12,6 @@ export interface Instance {
   name: string;
   minecraftVersion: string;
   loaderVersion?: string;
-  loaderType?: "fabric" | "forge" | "quilt";
+  loaderType?: ModLoaderType;
   mods: InstanceMod[];
 }

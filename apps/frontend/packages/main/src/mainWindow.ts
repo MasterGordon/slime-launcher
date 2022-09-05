@@ -2,7 +2,7 @@ import { app, BrowserWindow } from "electron";
 import { join } from "path";
 import { URL } from "url";
 import { registerQueryIpc, registerMutationIpc } from "./api";
-import { generateSettings } from "./settings";
+import { generateSettings } from "piston";
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
@@ -16,7 +16,7 @@ async function createWindow() {
       preload: join(app.getAppPath(), "packages/preload/dist/index.cjs"),
     },
     minWidth: 1000,
-    minHeight: 600,
+    minHeight: 800,
   });
 
   if (process.env.NODE_ENV !== "development") browserWindow.removeMenu();

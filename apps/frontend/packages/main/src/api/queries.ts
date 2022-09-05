@@ -1,7 +1,6 @@
 import { ipcMain } from "electron-better-ipc";
-import { getAccounts } from "../account";
+import { getAccounts, getSettings, validateJava } from "piston";
 import { downloadStatus } from "downloader";
-import { getSettings, validateJava } from "../settings";
 
 export const queries = {
   getAccounts,

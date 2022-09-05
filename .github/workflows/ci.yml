@@ -27,11 +27,14 @@ jobs:
         - name: Install dependencies
           run: yarn
  
-        - name: Build
-          run: yarn build
- 
         - name: Lint
           run: yarn lint
+
+        - name: Lint
+          run: yarn typecheck
+
+        - name: Build
+          run: yarn build
  
         - name: Compile
           run: yarn compile
