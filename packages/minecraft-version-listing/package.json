@@ -1,0 +1,25 @@
+{
+  "name": "minecraft-version-listing",
+  "version": "0.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.7.13",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "tsconfig": "*",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@supercharge/promise-pool": "^2.3.2",
+    "axios": "^0.27.2",
+    "fs-extra": "^10.1.0",
+    "xml-js": "^1.6.11"
+  }
+}
