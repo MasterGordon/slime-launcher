@@ -1,11 +1,12 @@
 import type { ModLoaderType } from "curse-client";
 
 export interface InstanceMod {
-  modId: number;
-  fileId: number;
+  modId?: number;
+  fileId?: number;
   fileName: string;
-  downloadUrl: string;
-  fingerprint: number;
+  name: string;
+  downloadUrl?: string;
+  fingerprint?: number;
 }
 
 export interface Instance {
