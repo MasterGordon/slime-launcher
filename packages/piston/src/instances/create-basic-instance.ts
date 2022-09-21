@@ -5,14 +5,14 @@ import getAppData from "../utils/get-app-data";
 
 type MinecraftVersionType = "release" | "snapshot" | "old_beta" | "old_alpha";
 
-interface CreateInstanceOptions {
+export interface CreateInstanceOptions {
   name: string;
-  slug: string;
   flavor: "vanilla" | "forge" | "fabric" | "quilt";
   version: string;
-  type: MinecraftVersionType;
+  loaderType: MinecraftVersionType;
   memory: number;
   loaderVersion?: string;
+  path: string;
 }
 
 const flavorToModLoaderType: Record<
@@ -28,5 +28,5 @@ const flavorToModLoaderType: Record<
 export const createInstance = async (options: CreateInstanceOptions) => {
   const loaderType = flavorToModLoaderType[options.flavor];
   const appData = getAppData();
-  await fs.ensureDir(path.join(appData, "instances", options.slug));
+  await fs.ensureDir(path.join(appData, "instances", options.path));
 };

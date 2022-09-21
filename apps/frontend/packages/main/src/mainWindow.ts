@@ -15,11 +15,11 @@ async function createWindow() {
       webviewTag: false,
       preload: join(app.getAppPath(), "packages/preload/dist/index.cjs"),
     },
-    minWidth: 1000,
-    minHeight: 800,
+    minWidth: 1200,
+    minHeight: 900,
   });
 
-  if (process.env.NODE_ENV !== "development") browserWindow.removeMenu();
+  // if (process.env.NODE_ENV !== "development") browserWindow.removeMenu();
 
   browserWindow.on("ready-to-show", () => {
     browserWindow?.show();

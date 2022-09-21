@@ -1,5 +1,15 @@
 import { ipcMain } from "electron-better-ipc";
-import { getAccounts, getSettings, validateJava } from "piston";
+import {
+  getAccounts,
+  getSettings,
+  validateJava,
+  getMinecraftVersions,
+  getForgeVersions,
+  getFabricLoaderVersions,
+  getFabricSupportedVersions,
+  getInstancesPath,
+  getMaxMemory,
+} from "piston";
 import { downloadStatus } from "downloader";
 
 export const queries = {
@@ -7,6 +17,12 @@ export const queries = {
   downloadStatus: () => downloadStatus,
   validateJava,
   getSettings,
+  getMinecraftVersions,
+  getForgeVersions,
+  getFabricLoaderVersions,
+  getFabricSupportedVersions,
+  getInstancesPath,
+  getMaxMemory,
 };
 
 type Event = {

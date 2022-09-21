@@ -24,6 +24,7 @@
     "downloader": "*",
     "glob": "^8.0.3",
     "unpack": "*",
+    "minecraft-version-listing": "*",
     "zod": "^3.18.0",
     "zod-to-json-schema": "^3.17.1"
   }
