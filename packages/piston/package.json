@@ -17,14 +17,15 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "msmc": "4.0.0-pre7",
-    "fs-extra": "^10.1.0",
-    "minecraft-launcher-core": "^3.16.16",
     "curse-client": "*",
     "downloader": "*",
+    "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
-    "unpack": "*",
+    "minecraft-launcher-core": "^3.16.16",
     "minecraft-version-listing": "*",
+    "msmc": "4.0.0-pre7",
+    "semver": "^7.3.7",
+    "unpack": "*",
     "zod": "^3.18.0",
     "zod-to-json-schema": "^3.17.1"
   }

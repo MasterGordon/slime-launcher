@@ -15,4 +15,7 @@ export interface Instance {
   loaderVersion?: string;
   loaderType?: ModLoaderType;
   mods: InstanceMod[];
+  forge?: string;
+  memory: number;
+  customVersion?: string;
 }
