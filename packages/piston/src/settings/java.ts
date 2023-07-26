@@ -4,7 +4,7 @@ import getAppData from "../utils/get-app-data";
 import fs from "fs-extra";
 import { spawn } from "child_process";
 import unpack from "unpack";
-import glob from "glob";
+import { glob } from "glob";
 import { downloadFile, resetDownloadStatus } from "downloader";
 import { updateSettings } from "./manage-settings";
 
@@ -85,7 +85,7 @@ const downloadJava = async (version: number): Promise<void> => {
   await downloadFile(
     `https://api.adoptium.net/v3/binary/latest/${version}/ga/${osName}/${os.arch()}/jre/hotspot/normal/eclipse?project=jdk`,
     targetFile,
-    true,
+    true
   );
 };
 

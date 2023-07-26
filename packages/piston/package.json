@@ -12,20 +12,21 @@
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.7.13",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
-    "tsconfig": "*",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "curse-client": "*",
-    "downloader": "*",
+    "curse-client": "workspace:*",
+    "downloader": "workspace:*",
     "fs-extra": "^10.1.0",
     "glob": "10.3.3",
     "minecraft-launcher-core": "^3.16.16",
-    "minecraft-version-listing": "*",
+    "minecraft-version-listing": "workspace:*",
     "msmc": "4.0.0-pre7",
+    "axios": "^0.27.2",
     "semver": "^7.3.7",
-    "unpack": "*",
+    "unpack": "workspace:*",
     "zod": "^3.18.0",
     "zod-to-json-schema": "^3.17.1"
   }
