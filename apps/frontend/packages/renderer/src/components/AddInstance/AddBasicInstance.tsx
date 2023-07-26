@@ -15,7 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { pascalCase } from "case-anything";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import useAddBasicInstanceForm from "./useAddBasicInstanceForm";
 
 interface MemorySliderProps {

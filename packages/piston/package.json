@@ -20,7 +20,7 @@
     "curse-client": "*",
     "downloader": "*",
     "fs-extra": "^10.1.0",
-    "glob": "^8.0.3",
+    "glob": "10.3.3",
     "minecraft-launcher-core": "^3.16.16",
     "minecraft-version-listing": "*",
     "msmc": "4.0.0-pre7",

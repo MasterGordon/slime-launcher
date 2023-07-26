@@ -26,7 +26,7 @@ export const queries = {
 };
 
 type Event = {
-  type: keyof typeof queries;
+  type: keyof Queries;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 };

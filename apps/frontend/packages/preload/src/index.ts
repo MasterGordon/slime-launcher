@@ -2,4 +2,4 @@
  * @module preload
  */
 
-export { api } from "./api";
+export { api, onForceRevalidate } from "./api";

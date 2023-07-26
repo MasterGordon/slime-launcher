@@ -4,31 +4,6 @@
   <meta charset="UTF-8">
   <meta content="script-src 'self' blob:" http-equiv="Content-Security-Policy">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
- <script>document.addEventListener('dragover', event => event.preventDefault());document.addEventListener('drop', event => event.preventDefault());</script>
-  <style>
-  :not(input):not(textarea)::not(button),
-  :not(input):not(textarea)::after,
-  :not(input):not(textarea)::before {
-      -webkit-user-select: none;
-      user-select: none;
-      cursor: default;
-  }
-  input, button, textarea, :focus {
-      outline: none;
-  }
-
-  /* disable image and anchor dragging */
-  a:not([draggable=true]), img:not([draggable=true]) {
-      -webkit-user-drag: none;
-      user-drag: none;
-  }
-  a[href^="http://"],
-  a[href^="https://"],
-  a[href^="ftp://"] {
-      -webkit-user-drag: auto;
-      user-drag: auto;
-  }
-  </style>
   <title>Slime Launcher</title>
 </head>
 <body>

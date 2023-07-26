@@ -9,7 +9,7 @@ interface FormValues {
   path: string;
   version: string;
   versionType: MinecraftVersion["type"];
-  loaderType: CreateInstanceOptions["flavor"];
+  loaderType: CreateInstanceOptions["loaderType"];
   loaderVersion?: string;
   memory: number;
 }

@@ -4,7 +4,7 @@ const Instances: React.FC = () => {
   return (
     <Center>
       <VStack>
-        <Heading size="md">You have instances yet!</Heading>
+        <Heading size="md">{`You don't have instances yet!`}</Heading>
         <Text>Click on the plus button to create one</Text>
       </VStack>
     </Center>

@@ -5,6 +5,8 @@ import LoginMenu from "./components/LoginMenu";
 import Settings from "./components/Settings";
 import AddInstance from "./components/AddInstance";
 import Instances from "./components/Instances";
+import "./reset/reset";
+import "./reset/reset.css";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(document.getElementById("app")!);
