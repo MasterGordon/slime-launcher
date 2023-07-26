@@ -22,22 +22,22 @@ jobs:
           uses: actions/setup-node@v2
           with:
             node-version: 16
-            cache: 'yarn'
+            cache: 'pnpm'
  
         - name: Install dependencies
-          run: yarn
+          run: pnpm install
  
         - name: Lint
-          run: yarn lint
+          run: pnpm lint
 
         - name: Lint
-          run: yarn typecheck
+          run: pnpm typecheck
 
         - name: Build
-          run: yarn build
+          run: pnpm build
  
         - name: Compile
-          run: yarn compile
+          run: pnpm compile
 
         - name: Removed unpacked release
           run: rm -rf apps/frontend/dist/linux-unpacked
