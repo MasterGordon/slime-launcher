@@ -18,11 +18,15 @@ jobs:
           with:
             fetch-depth: 2
  
-        - name: Setup Node.js environment
-          uses: actions/setup-node@v2
+        - name: Install Node.js
+          uses: actions/setup-node@v3
           with:
-            node-version: 16
-            cache: 'pnpm'
+            node-version: 18
+
+        - name: Setup Node.js environment
+          uses: pnpm/action-setup@v2
+          with:
+            version: 8
  
         - name: Install dependencies
           run: pnpm install
