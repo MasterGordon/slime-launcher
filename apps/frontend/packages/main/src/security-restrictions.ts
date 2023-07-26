@@ -3,6 +3,7 @@ import { URL } from "url";
 
 type Permissions =
   | "clipboard-read"
+  | "clipboard-sanitized-write"
   | "media"
   | "display-capture"
   | "mediaKeySystem"
@@ -13,7 +14,8 @@ type Permissions =
   | "pointerLock"
   | "fullscreen"
   | "openExternal"
-  | "unknown";
+  | "unknown"
+  | "window-management";
 
 /**
  * A list of origins that you allow open INSIDE the application and permissions for them.
