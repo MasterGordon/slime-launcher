@@ -11,6 +11,9 @@ import {
   getMaxMemory,
 } from "piston";
 import { downloadStatus } from "downloader";
+import { instanceManager } from "piston";
+import { inspect } from "util";
+import chalk from "chalk";
 
 export const queries = {
   getAccounts,
@@ -23,6 +26,7 @@ export const queries = {
   getFabricSupportedVersions,
   getInstancesPath,
   getMaxMemory,
+  getInstances: instanceManager.getInstances,
 };
 
 type Event = {
@@ -37,7 +41,17 @@ export const registerQueryIpc = (): void => {
   ipcMain.answerRenderer("query", async (event: Event) => {
     const result = await queries[event.type](event.data);
     if (import.meta.env.DEV) {
-      console.log(`[query] ${event.type}`, event.data, "=>", result);
+      console.info(
+        chalk.bgGreenBright.black(`[query]`),
+        event.type,
+        inspect(event.data, {
+          depth: 1,
+        }),
+        "=>",
+        inspect(result, {
+          depth: 1,
+        }),
+      );
     }
     return result;
   });

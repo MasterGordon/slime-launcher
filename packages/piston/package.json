@@ -17,14 +17,15 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "curse-client": "workspace:*",
     "downloader": "workspace:*",
+    "fast-deep-equal": "^3.1.3",
     "fs-extra": "^10.1.0",
     "glob": "10.3.3",
     "minecraft-launcher-core": "^3.16.16",
     "minecraft-version-listing": "workspace:*",
-    "msmc": "4.0.0-pre7",
-    "axios": "^0.27.2",
+    "msmc": "4.1.0",
     "semver": "^7.3.7",
     "unpack": "workspace:*",
     "zod": "^3.18.0",

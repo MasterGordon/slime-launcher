@@ -3,7 +3,9 @@ import fs from "fs-extra";
 import path from "path";
 import getAppData from "../utils/get-app-data";
 import type { Instance } from "./Instance";
+import { initialInstanceState } from "./Instance";
 import { downloadLoader } from "./download-loader";
+import { instanceManager } from "./instance-manager";
 
 type MinecraftVersionType = "release" | "snapshot" | "old_beta" | "old_alpha";
 
@@ -30,7 +32,7 @@ const flavorToModLoaderType: Record<
 export const createBasicInstance = async (options: CreateInstanceOptions) => {
   const loaderType = flavorToModLoaderType[options.loaderType];
   const appData = getAppData();
-  const instancePath = path.join(appData, "instances", options.name);
+  const instancePath = path.join(appData, "instances", options.path);
   await fs.ensureDir(instancePath);
 
   const instance: Instance = {
@@ -40,8 +42,9 @@ export const createBasicInstance = async (options: CreateInstanceOptions) => {
     loaderType,
     loaderVersion: options.loaderVersion,
     memory: options.memory,
+    path: instancePath,
+    state: initialInstanceState,
   };
-  await fs.writeJSON(path.join(instancePath, "instance.json"), instance);
 
   const loaderData = await downloadLoader(loaderType, {
     version: options.version,
@@ -49,4 +52,6 @@ export const createBasicInstance = async (options: CreateInstanceOptions) => {
     instancePath,
   });
   Object.assign(instance, loaderData);
+
+  await instanceManager.addInstance(instance);
 };

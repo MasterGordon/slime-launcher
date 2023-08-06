@@ -5,9 +5,9 @@ import { z } from "zod";
 import zodToJsonSchema from "zod-to-json-schema";
 
 export const settingsSchema = z.object({
-  $schema: z.string(),
-  maxConcurrentDownloads: z.number().min(1),
-  javaPath: z.record(z.string(), z.string()),
+  $schema: z.string().default("./settings.schema.json"),
+  maxConcurrentDownloads: z.number().min(1).default(3),
+  javaPath: z.record(z.string(), z.string()).default({}),
 });
 
 export type Settings = Omit<z.infer<typeof settingsSchema>, "$schema">;
@@ -33,7 +33,7 @@ export const generateSettings = async () => {
     { ...defaultSettings, ...settings },
     {
       spaces: 2,
-    },
+    }
   );
   await fs.writeJson(settingsSchemaPath, schema, {
     spaces: 2,
@@ -63,6 +63,6 @@ export const updateSettings = async (settingsUpdate: Partial<Settings>) => {
     },
     {
       spaces: 2,
-    },
+    }
   );
 };

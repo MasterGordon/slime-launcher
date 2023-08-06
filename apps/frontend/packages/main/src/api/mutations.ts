@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import { ipcMain } from "electron-better-ipc";
 import {
   removeAccount,
@@ -6,7 +7,11 @@ import {
   setActiveAccount,
   setupJava,
   updateSettings,
+  createBasicInstance,
+  launchInstance,
+  killInstance,
 } from "piston";
+import { inspect } from "util";
 
 export const mutate = {
   addMicrosoftAccount,
@@ -15,6 +20,9 @@ export const mutate = {
   setActiveAccount,
   setupJava,
   updateSettings,
+  createBasicInstance,
+  launchInstance,
+  killInstance,
 };
 
 type Event = {
@@ -28,7 +36,13 @@ export type Mutations = typeof mutate;
 export const registerMutationIpc = (): void => {
   ipcMain.answerRenderer("mutate", async (event: Event) => {
     if (import.meta.env.DEV) {
-      console.log(`[mutate] ${event.type}`, event.data);
+      console.info(
+        chalk.bgBlueBright.black(`[mutation]`),
+        event.type,
+        inspect(event.data, {
+          depth: 1,
+        }),
+      );
     }
     // @ts-expect-error - we don't know the type of data
     return mutate[event.type](event.data);

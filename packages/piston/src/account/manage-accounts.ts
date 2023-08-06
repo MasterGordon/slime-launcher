@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs-extra";
 import type { Account } from "./Account";
 import { Authenticator } from "minecraft-launcher-core";
-import msmc from "msmc";
+import { Auth } from "msmc";
 import axios from "axios";
 
 const getAccountsFilePath = (): string => {
@@ -35,7 +35,7 @@ export const removeAccount = async (uuid: string): Promise<void> => {
   const accounts = await getAccounts();
   const filePath = getAccountsFilePath();
   accounts.accounts = accounts.accounts.filter(
-    (account) => account.uuid !== uuid,
+    (account) => account.uuid !== uuid
   );
   await fs.writeJson(filePath, accounts);
 };
@@ -52,10 +52,10 @@ export const addOfflineAccount = async (username: string) => {
 };
 
 export const addMicrosoftAccount = async () => {
-  const auth = new msmc.auth();
-  const xbx = await auth.launch("electron");
-  const mc = await xbx.getMinecraft();
-  const account = mc.mclc();
+  const auth = new Auth("select_account");
+  const xboxManager = await auth.launch("raw");
+  const token = await xboxManager.getMinecraft();
+  const account = token.mclc();
   addAccount(account as Account);
 };
 

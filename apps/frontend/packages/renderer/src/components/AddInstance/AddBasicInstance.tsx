@@ -40,14 +40,15 @@ const MemorySlider: React.FC<MemorySliderProps> = ({
         max={maxMemory}
         min={min}
         step={512}
-        value={value}
-        onChange={(value) => {
+        onChangeEnd={(value) => {
           if (value < min) return;
           onChange({
             target: {
               value,
             },
           });
+        }}
+        onChange={(value) => {
           setValue(value);
         }}
       >
@@ -149,7 +150,11 @@ const AddBasicInstance: React.FC = () => {
           </Select>
         </FormControl>
       )}
-      <MemorySlider maxMemory={maxMemory} register={register} errors={errors} />
+      <MemorySlider
+        maxMemory={maxMemory - 2048}
+        register={register}
+        errors={errors}
+      />
       <Button isLoading={isSubmitting} type="submit">
         Create Instance
       </Button>

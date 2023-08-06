@@ -9,7 +9,16 @@ export interface InstanceMod {
   fingerprint?: number;
 }
 
+export interface InstanceState {
+  status: "idle" | "installing" | "launching" | "running";
+}
+
+export const initialInstanceState: InstanceState = {
+  status: "idle",
+};
+
 export interface Instance {
+  path: string;
   name: string;
   minecraftVersion: string;
   loaderVersion?: string;
@@ -18,4 +27,11 @@ export interface Instance {
   forge?: string;
   memory: number;
   customVersion?: string;
+  state: InstanceState;
 }
+
+type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+};
+
+export type InstanceUpdate = DeepPartial<Instance>;

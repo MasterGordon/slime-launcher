@@ -50,8 +50,6 @@ const JavaVersionPicker: React.FC<JavaVersionPickerProps> = (props) => {
       setJavaPathInput(javaPath);
     }
   }, [javaPath]);
-  console.log(downloadStatus);
-  console.log(settings);
   if (!settings || !downloadStatus) return null;
 
   const save = async () => {

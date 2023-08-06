@@ -1,7 +1,11 @@
 import { app, BrowserWindow } from "electron";
 import { join } from "path";
 import { URL } from "url";
-import { registerQueryIpc, registerMutationIpc } from "./api";
+import {
+  registerQueryIpc,
+  registerMutationIpc,
+  registerListeners,
+} from "./api";
 import { generateSettings } from "piston";
 
 async function createWindow() {
@@ -41,6 +45,7 @@ async function createWindow() {
   await browserWindow.loadURL(pageUrl);
   registerMutationIpc();
   registerQueryIpc();
+  registerListeners();
   void generateSettings();
 
   return browserWindow;

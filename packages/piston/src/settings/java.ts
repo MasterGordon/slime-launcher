@@ -41,7 +41,6 @@ export const validateJava = async ({
   version: number;
   executable: string;
 }): Promise<boolean> => {
-  console.log("Validating java", version, executable);
   if (!(await fs.pathExists(executable))) return false;
   return new Promise<boolean>((resolve) => {
     const process = spawn(executable, ["-version"]);
@@ -100,7 +99,6 @@ export const setupJava = async (version: number) => {
     await downloadJava(version);
     await installJava(version);
   }
-  console.log("updating settings");
   await updateSettings({
     javaPath: {
       [version]: await getJavaVersionPath(version),

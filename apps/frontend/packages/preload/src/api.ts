@@ -29,10 +29,10 @@ export const api = {
 };
 
 export const onForceRevalidate = (listener: (query: QueryType) => void) => {
-  const ls: Parameters<typeof ipcRenderer["on"]>[1] = (_, query: QueryType) => {
-    listener(query);
+  const ls: Parameters<(typeof ipcRenderer)["on"]>[1] = (query) => {
+    listener(query as unknown as QueryType);
   };
-  ipcRenderer.on("force-revalidate", ls);
+  ipcRenderer.answerMain("force-revalidate", ls);
   return () => {
     ipcRenderer.removeListener("force-revalidate", ls);
   };

@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { kebabCase } from "case-anything";
 import { useMainQuery } from "../../hooks/main";
 import type { CreateInstanceOptions, MinecraftVersion } from "piston";
+import { api } from "#preload";
+import { useToast } from "@chakra-ui/react";
 
 interface FormValues {
   name: string;
@@ -34,24 +36,29 @@ const useAddBasicInstanceForm = () => {
   const { handleSubmit, register, formState, watch, setValue } =
     useForm<FormValues>();
   const { errors, isSubmitting } = formState;
+  const {
+    versionType,
+    memory,
+    version,
+    path,
+    name,
+    loaderType,
+    loaderVersion,
+  } = watch();
 
-  const name = watch("name");
   useEffect(() => {
     setValue("path", kebabCase(name || ""));
   }, [name, setValue]);
 
-  const versionType = watch("versionType");
   let minecraftVersions = minecraftVersionsRaw?.versions.filter(
     (version) => version.type === versionType,
   );
 
-  const version = watch("version");
   useEffect(() => {
     if (minecraftVersionsRaw)
       setValue("version", minecraftVersionsRaw?.latest.release);
   }, [minecraftVersionsRaw, setValue]);
 
-  const loaderType = watch("loaderType");
   let loaderVersions: string[] | undefined;
 
   if (loaderType === "forge") {
@@ -68,8 +75,22 @@ const useAddBasicInstanceForm = () => {
     if (loaderType) setValue("loaderVersion", loaderVersions?.[0]);
   }, [loaderType, loaderVersions, setValue]);
 
+  const toast = useToast({
+    title: "Instance created",
+  });
   const onSubmit = (values: FormValues) => {
-    console.log(values);
+    // TODO: useMutation
+    api
+      .mutate("createBasicInstance", {
+        loaderType,
+        name,
+        path,
+        version,
+        memory,
+        versionType,
+        loaderVersion,
+      })
+      .then(() => toast());
   };
 
   return {
