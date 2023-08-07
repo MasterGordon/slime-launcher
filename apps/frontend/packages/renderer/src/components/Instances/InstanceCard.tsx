@@ -9,7 +9,7 @@ import {
   Icon,
   IconButton,
 } from "@chakra-ui/react";
-import type { Instance } from "piston";
+import type { Instance } from "@slime-launcher/piston";
 import { FaEllipsisH, FaPlayCircle, FaStopCircle } from "react-icons/fa";
 import { useMainMutation } from "../../hooks/main";
 

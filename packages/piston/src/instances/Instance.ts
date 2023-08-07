@@ -1,4 +1,4 @@
-import type { ModLoaderType } from "curse-client";
+import type { ModLoaderType } from "@slime-launcher/curse-client";
 
 export interface InstanceMod {
   modId?: number;

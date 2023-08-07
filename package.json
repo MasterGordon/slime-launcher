@@ -11,7 +11,7 @@
     "format": "prettier --write \"*/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
+    "@slime-launcher/eslint-config-custom": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
   },

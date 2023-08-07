@@ -1,5 +1,5 @@
 {
-  "name": "minecraft-version-listing",
+  "name": "@slime-launcher/minecraft-version-listing",
   "version": "0.0.0",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -12,8 +12,8 @@
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.7.13",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
+    "@slime-launcher/eslint-config-custom": "workspace:*",
+    "@slime-launcher/tsconfig": "workspace:*",
     "typescript": "^4.5.2"
   },
   "dependencies": {

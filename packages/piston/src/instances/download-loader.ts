@@ -1,8 +1,8 @@
-import { ModLoaderType } from "curse-client";
+import { ModLoaderType } from "@slime-launcher/curse-client";
 import path from "path";
 import fs from "fs-extra";
 import type { Instance } from "./Instance";
-import { downloadFile } from "downloader";
+import { downloadFile } from "@slime-launcher/downloader";
 import semver from "semver";
 
 interface LoaderOptions {
@@ -13,7 +13,7 @@ interface LoaderOptions {
 
 const getForgeDownloadUrl = (
   forgeName: string,
-  jarType: "installer" | "universal"
+  jarType: "installer" | "universal",
 ) =>
   `https://maven.minecraftforge.net/net/minecraftforge/forge/${forgeName}/forge-${forgeName}-${jarType}.jar`;
 
@@ -30,7 +30,7 @@ const loaderDownloader: Partial<
     const customVersion = fabricName;
     await downloadFile(
       getFabricDownloadUrl(version, loaderVersion),
-      path.join(versionPath, fabricName, fabricName + ".json")
+      path.join(versionPath, fabricName, fabricName + ".json"),
     );
     return { customVersion };
   },
@@ -48,7 +48,7 @@ const loaderDownloader: Partial<
 
 export const downloadLoader = async (
   loaderType: ModLoaderType | undefined,
-  options: LoaderOptions
+  options: LoaderOptions,
 ) => {
   const downloader = loaderType && loaderDownloader[loaderType];
   if (!downloader) {

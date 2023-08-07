@@ -1,19 +1,19 @@
-import { ipcMain } from "electron-better-ipc";
 import {
   getAccounts,
-  getSettings,
-  validateJava,
-  getMinecraftVersions,
-  getForgeVersions,
   getFabricLoaderVersions,
   getFabricSupportedVersions,
+  getForgeVersions,
   getInstancesPath,
   getMaxMemory,
-} from "piston";
-import { downloadStatus } from "downloader";
-import { instanceManager } from "piston";
-import { inspect } from "util";
+  getMinecraftVersions,
+  getSettings,
+  validateJava,
+  instanceManager,
+} from "@slime-launcher/piston";
 import chalk from "chalk";
+import { downloadStatus } from "@slime-launcher/downloader";
+import { ipcMain } from "electron-better-ipc";
+import { inspect } from "util";
 
 export const queries = {
   getAccounts,

@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { kebabCase } from "case-anything";
 import { useMainQuery } from "../../hooks/main";
-import type { CreateInstanceOptions, MinecraftVersion } from "piston";
+import type {
+  CreateInstanceOptions,
+  MinecraftVersion,
+} from "@slime-launcher/piston";
 import { api } from "#preload";
 import { useToast } from "@chakra-ui/react";
 
@@ -66,8 +69,8 @@ const useAddBasicInstanceForm = () => {
   }
   if (loaderType === "fabric") {
     loaderVersions = fabricVersions?.versions;
-    minecraftVersions = minecraftVersions?.filter((version) =>
-      fabricSupportedVersions?.includes(version.id),
+    minecraftVersions = minecraftVersions?.filter(
+      (version) => fabricSupportedVersions?.includes(version.id),
     );
   }
 

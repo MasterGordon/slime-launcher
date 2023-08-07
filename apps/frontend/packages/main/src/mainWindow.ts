@@ -6,7 +6,7 @@ import {
   registerMutationIpc,
   registerListeners,
 } from "./api";
-import { generateSettings } from "piston";
+import { generateSettings } from "@slime-launcher/piston";
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({

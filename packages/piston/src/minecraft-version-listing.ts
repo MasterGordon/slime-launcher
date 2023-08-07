@@ -1,1 +1,1 @@
-export * from "minecraft-version-listing";
+export * from "@slime-launcher/minecraft-version-listing";

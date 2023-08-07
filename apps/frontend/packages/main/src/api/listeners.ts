@@ -1,5 +1,5 @@
 import { ipcMain } from "electron-better-ipc";
-import { instanceManager } from "piston";
+import { instanceManager } from "@slime-launcher/piston";
 import { BrowserWindow } from "electron";
 import type { Queries } from "./queries";
 import chalk from "chalk";

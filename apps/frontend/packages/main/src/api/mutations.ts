@@ -10,7 +10,7 @@ import {
   createBasicInstance,
   launchInstance,
   killInstance,
-} from "piston";
+} from "@slime-launcher/piston";
 import { inspect } from "util";
 
 export const mutate = {

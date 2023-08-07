@@ -8,7 +8,7 @@ importers:
 
   .:
     devDependencies:
-      eslint-config-custom:
+      '@slime-launcher/eslint-config-custom':
         specifier: workspace:*
         version: link:packages/eslint-config-custom
       prettier:
@@ -32,6 +32,12 @@ importers:
       '@emotion/styled':
         specifier: ^11.11.0
         version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.0.18)(react@18.2.0)
+      '@slime-launcher/downloader':
+        specifier: workspace:*
+        version: link:../../packages/downloader
+      '@slime-launcher/piston':
+        specifier: workspace:*
+        version: link:../../packages/piston
       '@supercharge/promise-pool':
         specifier: ^2.3.2
         version: 2.3.2
@@ -47,9 +53,6 @@ importers:
       chalk:
         specifier: ^5.3.0
         version: 5.3.0
-      downloader:
-        specifier: workspace:*
-        version: link:../../packages/downloader
       electron-better-ipc:
         specifier: ^2.0.1
         version: 2.0.1
@@ -62,9 +65,6 @@ importers:
       fs-extra:
         specifier: ^10.1.0
         version: 10.1.0
-      piston:
-        specifier: workspace:*
-        version: link:../../packages/piston
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -136,18 +136,18 @@ importers:
         specifier: ^0.10.7
         version: 0.10.7
     devDependencies:
+      '@slime-launcher/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@slime-launcher/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/node':
         specifier: ^18.7.13
         version: 18.7.13
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       typescript:
         specifier: ^4.5.2
         version: 4.8.2
@@ -164,6 +164,12 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
     devDependencies:
+      '@slime-launcher/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@slime-launcher/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/fs-extra':
         specifier: ^9.0.13
         version: 9.0.13
@@ -173,12 +179,6 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       typescript:
         specifier: ^4.5.2
         version: 4.8.2
@@ -226,6 +226,12 @@ importers:
         specifier: ^1.6.11
         version: 1.6.11
     devDependencies:
+      '@slime-launcher/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@slime-launcher/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/fs-extra':
         specifier: ^9.0.13
         version: 9.0.13
@@ -235,27 +241,27 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       typescript:
         specifier: ^4.5.2
         version: 4.8.2
 
   packages/piston:
     dependencies:
+      '@slime-launcher/curse-client':
+        specifier: workspace:*
+        version: link:../curse-client
+      '@slime-launcher/downloader':
+        specifier: workspace:*
+        version: link:../downloader
+      '@slime-launcher/minecraft-version-listing':
+        specifier: workspace:*
+        version: link:../minecraft-version-listing
+      '@slime-launcher/unpack':
+        specifier: workspace:*
+        version: link:../unpack
       axios:
         specifier: ^0.27.2
         version: 0.27.2
-      curse-client:
-        specifier: workspace:*
-        version: link:../curse-client
-      downloader:
-        specifier: workspace:*
-        version: link:../downloader
       fast-deep-equal:
         specifier: ^3.1.3
         version: 3.1.3
@@ -268,18 +274,12 @@ importers:
       minecraft-launcher-core:
         specifier: ^3.16.16
         version: 3.16.16
-      minecraft-version-listing:
-        specifier: workspace:*
-        version: link:../minecraft-version-listing
       msmc:
         specifier: 4.1.0
         version: 4.1.0
       semver:
         specifier: ^7.3.7
         version: 7.5.4
-      unpack:
-        specifier: workspace:*
-        version: link:../unpack
       zod:
         specifier: ^3.18.0
         version: 3.18.0
@@ -287,6 +287,12 @@ importers:
         specifier: ^3.17.1
         version: 3.17.1(zod@3.18.0)
     devDependencies:
+      '@slime-launcher/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@slime-launcher/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/fs-extra':
         specifier: ^9.0.13
         version: 9.0.13
@@ -296,12 +302,6 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       typescript:
         specifier: ^4.5.2
         version: 4.8.2
@@ -320,6 +320,12 @@ importers:
         specifier: 6.1.15
         version: 6.1.15
     devDependencies:
+      '@slime-launcher/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@slime-launcher/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/adm-zip':
         specifier: ^0.5.0
         version: 0.5.0
@@ -335,12 +341,6 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       typescript:
         specifier: ^4.5.2
         version: 4.8.2

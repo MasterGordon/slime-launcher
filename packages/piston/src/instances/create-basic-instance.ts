@@ -1,4 +1,4 @@
-import { ModLoaderType } from "curse-client";
+import { ModLoaderType } from "@slime-launcher/curse-client";
 import fs from "fs-extra";
 import path from "path";
 import getAppData from "../utils/get-app-data";

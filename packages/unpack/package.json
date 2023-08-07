@@ -1,5 +1,5 @@
 {
-  "name": "unpack",
+  "name": "@slime-launcher/unpack",
   "version": "0.0.0",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -14,8 +14,8 @@
     "@types/node": "^18.7.13",
     "@types/tar": "^6.1.2",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
+    "@slime-launcher/eslint-config-custom": "workspace:*",
+    "@slime-launcher/tsconfig": "workspace:*",
     "typescript": "^4.5.2"
   },
   "dependencies": {
