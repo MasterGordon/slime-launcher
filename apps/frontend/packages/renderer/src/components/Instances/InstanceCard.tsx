@@ -12,6 +12,7 @@ import {
 import type { Instance } from "@slime-launcher/piston";
 import { FaEllipsisH, FaPlayCircle, FaStopCircle } from "react-icons/fa";
 import { useMainMutation } from "../../hooks/main";
+import InstanceMenu from "./InstanceMenu/InstanceMenu";
 
 interface Props {
   instance: Instance;
@@ -96,13 +97,7 @@ const InstanceCard: React.FC<Props> = (props) => {
         >
           {buttonLabel}
         </Button>
-        <IconButton
-          aria-label="Instance Settings"
-          borderRadius="none"
-          borderBottomEndRadius="lg"
-        >
-          <Icon as={FaEllipsisH} />
-        </IconButton>
+        <InstanceMenu instance={props.instance} />
       </ButtonGroup>
     </Grid>
   );
