@@ -139,6 +139,9 @@ importers:
       '@slime-launcher/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
+      '@slime-launcher/murmur2':
+        specifier: workspace:*
+        version: link:../murmur2
       '@slime-launcher/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -225,6 +228,31 @@ importers:
       xml-js:
         specifier: ^1.6.11
         version: 1.6.11
+    devDependencies:
+      '@slime-launcher/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@slime-launcher/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/fs-extra':
+        specifier: ^9.0.13
+        version: 9.0.13
+      '@types/node':
+        specifier: ^18.7.13
+        version: 18.7.13
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      typescript:
+        specifier: ^4.5.2
+        version: 4.8.2
+
+  packages/murmur2:
+    dependencies:
+      fs-extra:
+        specifier: ^10.1.0
+        version: 10.1.0
     devDependencies:
       '@slime-launcher/eslint-config-custom':
         specifier: workspace:*
@@ -2304,7 +2332,7 @@ packages:
   /@types/adm-zip@0.5.0:
     resolution: {integrity: sha512-FCJBJq9ODsQZUNURo5ILAQueuA8WJhRvuihS3ke2iI25mJlfV2LK8jG2Qj2z2AWg8U0FtWWqBHVRetceLskSaw==}
     dependencies:
-      '@types/node': 18.7.13
+      '@types/node': 18.17.1
     dev: true
 
   /@types/cacheable-request@6.0.3:
@@ -2412,7 +2440,7 @@ packages:
   /@types/tar@6.1.2:
     resolution: {integrity: sha512-bnX3RRm70/n1WMwmevdOAeDU4YP7f5JSubgnuU+yrO+xQQjwDboJj3u2NTJI5ngCQhXihqVVAH5h5J8YpdpEvg==}
     dependencies:
-      '@types/node': 18.7.13
+      '@types/node': 18.17.1
       minipass: 3.3.6
     dev: true
 

@@ -1,5 +1,5 @@
 {
-  "name": "@slime-launcher/curse-client",
+  "name": "@slime-launcher/modrinth-client",
   "version": "0.0.0",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
