@@ -1,2 +1,2 @@
 export * from "./interface";
-export * from "./create-curse-client";
+export * from "./create-modrinth-client";
