@@ -137,3 +137,12 @@ export interface Version {
     file_type?: "required-resource-pack" | "optional-resource-pack";
   }>;
 }
+
+export type Facet =
+  | "project_type"
+  | "categories"
+  | "versions"
+  | "project_type"
+  | "client_side"
+  | "server_side"
+  | "open_source";

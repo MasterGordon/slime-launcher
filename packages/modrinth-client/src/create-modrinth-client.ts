@@ -1,9 +1,12 @@
 import axios from "axios";
 import { setupCache } from "axios-cache-interceptor";
-import { getMod } from "./get-mod";
-import { getModDescription } from "./get-mod-description";
-import { getModFiles } from "./get-mod-files";
-import { getMods } from "./get-mods";
+import { getProject } from "./get-project";
+import { getProjectVersions } from "./get-project-versions";
+import { getProjects } from "./get-projects";
+import { getTags } from "./get-tags";
+import { getVersion } from "./get-version";
+import { getVersionFromHashes } from "./get-version-from-hash";
+import { getVersions } from "./get-versions";
 import { search } from "./search";
 
 export interface CreateClientOptions {
@@ -11,7 +14,7 @@ export interface CreateClientOptions {
   userAgent: string;
 }
 
-export const createCurseClient = (options: CreateClientOptions) => {
+export const createModrinthClient = (options: CreateClientOptions) => {
   const { apiKey, userAgent } = options;
   const headers = {} as Record<string, string>;
   if (apiKey) {
@@ -29,9 +32,14 @@ export const createCurseClient = (options: CreateClientOptions) => {
   );
   return {
     search: search.bind(null, axiosClient),
-    getMod: getMod.bind(null, axiosClient),
-    getMods: getMods.bind(null, axiosClient),
-    getModDescription: getModDescription.bind(null, axiosClient),
-    getModFiles: getModFiles.bind(null, axiosClient),
+    getProject: getProject.bind(null, axiosClient),
+    getProjects: getProjects.bind(null, axiosClient),
+    getProjectVersions: getProjectVersions.bind(null, axiosClient),
+    getTags: getTags.bind(null, axiosClient),
+    getVersionFromHashes: getVersionFromHashes.bind(null, axiosClient),
+    getVersion: getVersion.bind(null, axiosClient),
+    getVersions: getVersions.bind(null, axiosClient),
   };
 };
+
+export type ModrinthClient = ReturnType<typeof createModrinthClient>;
