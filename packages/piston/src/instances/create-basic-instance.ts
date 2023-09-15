@@ -1,8 +1,7 @@
-import { ModLoaderType } from "@slime-launcher/curse-client";
 import fs from "fs-extra";
 import path from "path";
 import getAppData from "../utils/get-app-data";
-import type { Instance } from "./Instance";
+import type { Instance, ModLoaderType } from "./Instance";
 import { initialInstanceState } from "./Instance";
 import { downloadLoader } from "./download-loader";
 import { instanceManager } from "./instance-manager";
@@ -11,7 +10,7 @@ type MinecraftVersionType = "release" | "snapshot" | "old_beta" | "old_alpha";
 
 export interface CreateInstanceOptions {
   name: string;
-  loaderType: "vanilla" | "forge" | "fabric" | "quilt";
+  loaderType: "vanilla" | "forge" | "fabric";
   version: string;
   versionType: MinecraftVersionType;
   memory: number;
@@ -24,9 +23,8 @@ const flavorToModLoaderType: Record<
   ModLoaderType | undefined
 > = {
   vanilla: undefined,
-  forge: ModLoaderType.Forge,
-  fabric: ModLoaderType.Fabric,
-  quilt: ModLoaderType.Quilt,
+  forge: "forge",
+  fabric: "fabric",
 };
 
 export const createBasicInstance = async (options: CreateInstanceOptions) => {
@@ -42,7 +40,7 @@ export const createBasicInstance = async (options: CreateInstanceOptions) => {
     loaderType,
     loaderVersion: options.loaderVersion,
     memory: options.memory,
-    path: instancePath,
+    path: options.path,
     state: initialInstanceState,
   };
 
@@ -54,4 +52,5 @@ export const createBasicInstance = async (options: CreateInstanceOptions) => {
   Object.assign(instance, loaderData);
 
   await instanceManager.addInstance(instance);
+  console.log("created");
 };

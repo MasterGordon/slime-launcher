@@ -12,6 +12,7 @@ import {
   killInstance,
   updateInstance,
   deleteInstance,
+  openInstance,
 } from "@slime-launcher/piston";
 import { inspect } from "util";
 
@@ -27,6 +28,7 @@ export const mutate = {
   killInstance,
   deleteInstance,
   updateInstance,
+  openInstance,
 };
 
 type Event = {

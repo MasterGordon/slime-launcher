@@ -9,15 +9,12 @@ import {
   MenuItem,
   useDisclosure,
 } from "@chakra-ui/react";
-import type { Instance } from "@slime-launcher/piston";
 import { useRef } from "react";
 import { useMainMutation } from "../../../hooks/main";
+import { useInstance } from "../InstanceProvider";
 
-interface Props {
-  instance: Instance;
-}
-
-export const DeleteInstanceItem: React.FC<Props> = ({ instance }) => {
+export const DeleteInstanceItem: React.FC = () => {
+  const instance = useInstance();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const deleteInstance = useMainMutation("deleteInstance");
   const cancelRef = useRef(null);

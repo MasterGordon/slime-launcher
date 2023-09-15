@@ -81,6 +81,7 @@ const useAddBasicInstanceForm = () => {
   const toast = useToast({
     title: "Instance created",
   });
+  console.log("memory", memory);
   const onSubmit = (values: FormValues) => {
     // TODO: useMutation
     api
@@ -106,6 +107,7 @@ const useAddBasicInstanceForm = () => {
     loaderType,
     instancesPath,
     maxMemory: (maxMemory ?? 0) * 1024,
+    setValue,
   };
 };
 

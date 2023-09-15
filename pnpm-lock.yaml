@@ -248,8 +248,39 @@ importers:
         specifier: ^4.5.2
         version: 4.8.2
 
+  packages/mod-sources:
+    dependencies:
+      '@slime-launcher/curse-client':
+        specifier: workspace:*
+        version: link:../curse-client
+      '@slime-launcher/modrinth-client':
+        specifier: workspace:*
+        version: link:../modrinth-client
+      '@slime-launcher/piston':
+        specifier: workspace:*
+        version: link:../piston
+    devDependencies:
+      '@slime-launcher/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@slime-launcher/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/node':
+        specifier: ^18.7.13
+        version: 18.7.13
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      typescript:
+        specifier: ^4.5.2
+        version: 4.8.2
+
   packages/modrinth-client:
     dependencies:
+      '@slime-launcher/murmur2':
+        specifier: workspace:*
+        version: link:../murmur2
       axios:
         specifier: ^0.27.2
         version: 0.27.2
@@ -260,9 +291,6 @@ importers:
       '@slime-launcher/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
-      '@slime-launcher/murmur2':
-        specifier: workspace:*
-        version: link:../murmur2
       '@slime-launcher/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

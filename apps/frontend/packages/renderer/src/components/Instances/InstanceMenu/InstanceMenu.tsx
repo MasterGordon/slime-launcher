@@ -6,16 +6,16 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import type { Instance } from "@slime-launcher/piston";
 import { FaEllipsisH } from "react-icons/fa";
 import { useMainMutation } from "../../../hooks/main";
+import { useInstance } from "../InstanceProvider";
 import { DeleteInstanceItem } from "./DeleteInstanceItem";
+import InstanceSettingsMenu from "./InstanceSettings/InstanceSettings";
 
-interface Props {
-  instance: Instance;
-}
+const InstanceMenu: React.FC = () => {
+  const openInstance = useMainMutation("openInstance");
+  const instance = useInstance();
 
-const InstanceMenu: React.FC<Props> = ({ instance }) => {
   return (
     <Menu strategy="fixed">
       <MenuButton
@@ -27,9 +27,13 @@ const InstanceMenu: React.FC<Props> = ({ instance }) => {
         <Icon as={FaEllipsisH} />
       </MenuButton>
       <MenuList>
-        <DeleteInstanceItem instance={instance} />
+        <InstanceSettingsMenu />
+        <MenuItem>Add Mods</MenuItem>
+        <MenuItem onClick={() => openInstance.mutate(instance.path)}>
+          Open Folder
+        </MenuItem>
         <MenuItem>Rename</MenuItem>
-        <MenuItem>Edit</MenuItem>
+        <DeleteInstanceItem />
       </MenuList>
     </Menu>
   );

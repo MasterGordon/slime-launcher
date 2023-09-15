@@ -21,6 +21,7 @@ import useAddBasicInstanceForm from "./useAddBasicInstanceForm";
 interface MemorySliderProps {
   maxMemory: number;
   register: ReturnType<typeof useAddBasicInstanceForm>["register"];
+  setValue: ReturnType<typeof useAddBasicInstanceForm>["setValue"];
   errors: ReturnType<typeof useAddBasicInstanceForm>["errors"];
 }
 
@@ -28,6 +29,7 @@ const MemorySlider: React.FC<MemorySliderProps> = ({
   maxMemory,
   register,
   errors,
+  setValue: setFormValue,
 }) => {
   const { min: _min, max: _max, onChange } = register("memory");
   const min = 2 * 1024;
@@ -41,12 +43,9 @@ const MemorySlider: React.FC<MemorySliderProps> = ({
         min={min}
         step={512}
         onChangeEnd={(value) => {
+          console.log("change end", value);
           if (value < min) return;
-          onChange({
-            target: {
-              value,
-            },
-          });
+          setFormValue("memory", value);
         }}
         onChange={(value) => {
           setValue(value);
@@ -75,6 +74,7 @@ const AddBasicInstance: React.FC = () => {
     loaderVersions,
     instancesPath,
     maxMemory,
+    setValue,
   } = useAddBasicInstanceForm();
 
   return (
@@ -154,6 +154,7 @@ const AddBasicInstance: React.FC = () => {
         maxMemory={maxMemory - 2048}
         register={register}
         errors={errors}
+        setValue={setValue}
       />
       <Button isLoading={isSubmitting} type="submit">
         Create Instance

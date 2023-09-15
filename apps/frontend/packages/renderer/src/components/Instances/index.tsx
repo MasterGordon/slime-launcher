@@ -1,6 +1,7 @@
 import { Text, Center, Heading, VStack, Flex } from "@chakra-ui/react";
 import { useMainQuery } from "../../hooks/main";
 import InstanceCard from "./InstanceCard";
+import { InstanceProvider } from "./InstanceProvider";
 
 const Instances: React.FC = () => {
   const { data: instances } = useMainQuery("getInstances", undefined);
@@ -23,7 +24,9 @@ const Instances: React.FC = () => {
       padding="50px"
     >
       {instances?.map((instance) => (
-        <InstanceCard key={instance.path} instance={instance} />
+        <InstanceProvider instance={instance} key={instance.path}>
+          <InstanceCard />
+        </InstanceProvider>
       ))}
     </Flex>
   );

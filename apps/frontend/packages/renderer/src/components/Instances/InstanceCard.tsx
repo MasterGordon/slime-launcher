@@ -7,16 +7,12 @@ import {
   CircularProgress,
   Grid,
   Icon,
-  IconButton,
 } from "@chakra-ui/react";
 import type { Instance } from "@slime-launcher/piston";
-import { FaEllipsisH, FaPlayCircle, FaStopCircle } from "react-icons/fa";
+import { FaPlayCircle, FaStopCircle } from "react-icons/fa";
 import { useMainMutation } from "../../hooks/main";
 import InstanceMenu from "./InstanceMenu/InstanceMenu";
-
-interface Props {
-  instance: Instance;
-}
+import { useInstance } from "./InstanceProvider";
 
 const buttonLabelByStatus: Record<
   Instance["state"]["status"],
@@ -52,23 +48,24 @@ const iconByStatus: Record<
   ),
 };
 
-const InstanceCard: React.FC<Props> = (props) => {
+const InstanceCard: React.FC = (props) => {
   const launch = useMainMutation("launchInstance");
   const kill = useMainMutation("killInstance");
+  const instance = useInstance();
 
   const onClick = () => {
-    if (props.instance.state.status === "running") {
-      kill.mutateAsync(props.instance.path);
+    if (instance.state.status === "running") {
+      kill.mutateAsync(instance.path);
       return;
     }
-    if (props.instance.state.status === "idle") {
-      launch.mutateAsync(props.instance.path);
+    if (instance.state.status === "idle") {
+      launch.mutateAsync(instance.path);
       return;
     }
   };
 
-  const buttonIcon = iconByStatus[props.instance.state.status];
-  const buttonLabel = buttonLabelByStatus[props.instance.state.status];
+  const buttonIcon = iconByStatus[instance.state.status];
+  const buttonLabel = buttonLabelByStatus[instance.state.status];
 
   return (
     <Grid
@@ -81,10 +78,10 @@ const InstanceCard: React.FC<Props> = (props) => {
       position="relative"
     >
       <Center fontSize="lg" textAlign="center">
-        {props.instance.name}
+        {instance.name}
       </Center>
       <Box position="absolute" right="2" top="2" fontSize="sm" color="gray.700">
-        {props.instance.minecraftVersion}
+        {instance.minecraftVersion}
       </Box>
       <ButtonGroup isAttached width="100%">
         <Button
@@ -97,7 +94,7 @@ const InstanceCard: React.FC<Props> = (props) => {
         >
           {buttonLabel}
         </Button>
-        <InstanceMenu instance={props.instance} />
+        <InstanceMenu />
       </ButtonGroup>
     </Grid>
   );

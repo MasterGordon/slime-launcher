@@ -23,7 +23,7 @@ const instanceManager = {
         const json = await fs.readJSON(fullInstancePath);
         const instancePath = fullInstancePath.split(path.sep).at(-2);
         return { ...json, path: instancePath, state: initialInstanceState };
-      })
+      }),
     );
 
     instanceManager.emitInstancesChange();
@@ -31,9 +31,12 @@ const instanceManager = {
   addInstance: async (instance: Instance) => {
     await fs.ensureDir(`${instancesPath}/${instance.path}`);
     const { path, state: _, ...instanceJson } = instance;
+    console.log("path", path);
+    console.log("ipath", instancesPath);
 
     await fs.writeJSON(`${instancesPath}/${path}/instance.json`, instanceJson);
 
+    instances.push(instance);
     instanceManager.emitInstancesChange();
   },
   removeInstance: async (instance: Instance) => {
@@ -78,7 +81,7 @@ const instanceManager = {
   },
   setInstanceProcess: (
     instancePath: string,
-    process: ChildProcessWithoutNullStreams
+    process: ChildProcessWithoutNullStreams,
   ) => {
     instanceProcesses.set(instancePath, process);
   },

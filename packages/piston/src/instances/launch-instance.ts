@@ -33,7 +33,7 @@ export const launchInstance = async (instancePath: string) => {
       : undefined,
     javaPath: settings.javaPath["13"],
   });
-  // client.on("debug", (e) => console.log(e));
+  client.on("debug", (e) => console.log(e));
 
   let running = false;
 
@@ -45,6 +45,7 @@ export const launchInstance = async (instancePath: string) => {
   }
   instanceManager.setInstanceProcess(instancePath, mcProcess);
   client.on("data", (_e) => {
+    console.log(_e);
     if (!running) {
       instanceManager.updateInstance(instancePath, {
         state: { status: "running" },

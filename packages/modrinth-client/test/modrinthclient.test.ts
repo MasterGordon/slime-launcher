@@ -28,8 +28,11 @@ describe("ModrinthClient", () => {
   });
 
   test("getTags", async () => {
-    const res = await client.getTags("loader");
-    expect(res.length).gt(0);
+    const tagTypes = Object.keys(
+      client.tags,
+    ) as (keyof (typeof client)["tags"])[];
+    const tags = await Promise.all(tagTypes.map((t) => client.tags[t]()));
+    tags.forEach((tag) => expect(tag.length).gt(0));
   });
 
   test("getProject", async () => {

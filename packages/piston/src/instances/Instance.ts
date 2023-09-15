@@ -1,12 +1,12 @@
-import type { ModLoaderType } from "@slime-launcher/curse-client";
+export type ModLoaderType = "forge" | "fabric";
 
 export interface InstanceMod {
-  modId?: number;
-  fileId?: number;
+  modId?: number | string;
+  fileId?: number | string;
+  title: string;
+  source?: string | "unknown";
   fileName: string;
-  name: string;
-  downloadUrl?: string;
-  fingerprint?: number;
+  sha512?: string;
 }
 
 export interface InstanceState {

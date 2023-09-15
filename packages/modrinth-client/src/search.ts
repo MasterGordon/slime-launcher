@@ -17,7 +17,7 @@ export interface SearchParameters {
 }
 
 export interface SearchResults {
-  hits: SearchResult;
+  hits: SearchResult[];
   offset: number;
   limit: number;
   total_hits: number;

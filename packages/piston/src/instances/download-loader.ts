@@ -1,7 +1,6 @@
-import { ModLoaderType } from "@slime-launcher/curse-client";
 import path from "path";
 import fs from "fs-extra";
-import type { Instance } from "./Instance";
+import type { Instance, ModLoaderType } from "./Instance";
 import { downloadFile } from "@slime-launcher/downloader";
 import semver from "semver";
 
@@ -23,7 +22,7 @@ const getFabricDownloadUrl = (gameVersion: string, loaderVersion: string) =>
 const loaderDownloader: Partial<
   Record<ModLoaderType, (options: LoaderOptions) => Promise<Partial<Instance>>>
 > = {
-  [ModLoaderType.Fabric]: async ({ version, instancePath, loaderVersion }) => {
+  fabric: async ({ version, instancePath, loaderVersion }) => {
     const fabricName = `fabric-loader-${loaderVersion}-${version}`;
     const versionPath = path.join(instancePath, "versions");
     await fs.ensureDir(path.join(versionPath, fabricName));
@@ -34,7 +33,7 @@ const loaderDownloader: Partial<
     );
     return { customVersion };
   },
-  [ModLoaderType.Forge]: async ({ version, instancePath, loaderVersion }) => {
+  forge: async ({ version, instancePath, loaderVersion }) => {
     const jarType = semver.gt(version, "1.12.0", true)
       ? "installer"
       : "universal";
