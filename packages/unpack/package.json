@@ -16,7 +16,7 @@
     "eslint": "^7.32.0",
     "@slime-launcher/eslint-config-custom": "workspace:*",
     "@slime-launcher/tsconfig": "workspace:*",
-    "typescript": "^4.5.2"
+    "typescript": "5.2.2"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
