@@ -13,6 +13,7 @@ import {
   updateInstance,
   deleteInstance,
   openInstance,
+  fetchInstanceMods,
 } from "@slime-launcher/piston";
 import { inspect } from "util";
 
@@ -29,6 +30,7 @@ export const mutate = {
   deleteInstance,
   updateInstance,
   openInstance,
+  fetchInstanceMods,
 };
 
 type Event = {
@@ -50,7 +52,10 @@ export const registerMutationIpc = (): void => {
         }),
       );
     }
+    console.time(event.type);
     // @ts-expect-error - we don't know the type of data
-    return mutate[event.type](event.data);
+    const res = await mutate[event.type](event.data);
+    console.timeEnd(event.type);
+    return res;
   });
 };

@@ -39,6 +39,7 @@ export type Queries = typeof queries;
 
 export const registerQueryIpc = (): void => {
   ipcMain.answerRenderer("query", async (event: Event) => {
+    console.time(event.type);
     const result = await queries[event.type](event.data);
     if (import.meta.env.DEV) {
       console.info(
@@ -53,6 +54,7 @@ export const registerQueryIpc = (): void => {
         }),
       );
     }
+    console.timeEnd(event.type);
     return result;
   });
 };

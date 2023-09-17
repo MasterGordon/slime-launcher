@@ -10,5 +10,6 @@ export * from "./instances/Instance";
 export * from "./instances/kill-instance";
 export * from "./instances/delete-instance";
 export * from "./instances/update-instance";
+export * from "./instances/fetch-instance-mods";
 export * from "./utils/open-instance";
 export * from "./interfaces/ModSource";

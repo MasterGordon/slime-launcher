@@ -3,9 +3,10 @@ export type ModLoaderType = "forge" | "fabric";
 export interface InstanceMod {
   modId?: number | string;
   fileId?: number | string;
-  title: string;
+  title?: string;
   source?: string | "unknown";
   fileName: string;
+  version?: string;
   sha512?: string;
 }
 

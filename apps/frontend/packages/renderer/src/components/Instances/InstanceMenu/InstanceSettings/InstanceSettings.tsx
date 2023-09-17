@@ -16,6 +16,7 @@ import {
 import { useState } from "react";
 import { useInstance } from "../../InstanceProvider";
 import Overview from "./Overview";
+import Mods from "./Mods";
 
 const InstanceSettingsMenu: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,7 +32,7 @@ const InstanceSettingsMenu: React.FC = () => {
       <MenuItem onClick={onOpen}>Modify</MenuItem>
       <Modal isOpen={isOpen} onClose={onClose} size="4xl">
         <ModalOverlay />
-        <ModalContent height="450px">
+        <ModalContent height="calc(100vh - 200px)">
           <ModalCloseButton />
           <ModalHeader>{instance.name}</ModalHeader>
           <ModalBody padding="0" height="100%">
@@ -40,6 +41,7 @@ const InstanceSettingsMenu: React.FC = () => {
               variant="solid-rounded"
               height="100%"
               onChange={handleTabsChange}
+              background="gray.700"
               index={tabIndex}
             >
               <TabList
@@ -54,9 +56,12 @@ const InstanceSettingsMenu: React.FC = () => {
                 <Tab whiteSpace="nowrap">Resource Packs</Tab>
                 <Tab>Screenshots</Tab>
               </TabList>
-              <TabPanels height="100%">
+              <TabPanels height="100%" overflowY="auto">
                 <TabPanel>
                   <Overview />
+                </TabPanel>
+                <TabPanel>
+                  <Mods />
                 </TabPanel>
               </TabPanels>
             </Tabs>
