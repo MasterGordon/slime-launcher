@@ -43,6 +43,7 @@ const InstanceSettingsMenu: React.FC = () => {
               onChange={handleTabsChange}
               background="gray.700"
               index={tabIndex}
+              borderBottomLeftRadius="md"
             >
               <TabList
                 flexDirection="column"

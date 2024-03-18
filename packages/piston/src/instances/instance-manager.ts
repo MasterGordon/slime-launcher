@@ -92,6 +92,43 @@ const instanceManager = {
       instanceProcesses.delete(instancePath);
     }
   },
+  enableMod: async (instancePath: string, fileName: string) => {
+    if (!fileName.endsWith(".jar.disabled")) return;
+    const instance = instanceManager.getInstance(instancePath);
+    if (!instance) throw new Error(`Instance ${instancePath} not found`);
+    await fs.rename(
+      `${instancesPath}/${instancePath}/mods/${fileName}`,
+      `${instancesPath}/${instancePath}/mods/${fileName.replace(
+        ".disabled",
+        "",
+      )}`,
+    );
+    await instanceManager.updateInstance(instancePath, {
+      mods: instance.mods.map((mod) => {
+        if (mod.fileName === fileName) {
+          return { ...mod, fileName: mod.fileName.replace(".disabled", "") };
+        }
+        return mod;
+      }),
+    });
+  },
+  disableMod: async (instancePath: string, fileName: string) => {
+    if (fileName.endsWith(".jar.disabled")) return;
+    const instance = instanceManager.getInstance(instancePath);
+    if (!instance) throw new Error(`Instance ${instancePath} not found`);
+    await fs.rename(
+      `${instancesPath}/${instancePath}/mods/${fileName}`,
+      `${instancesPath}/${instancePath}/mods/${fileName}.disabled`,
+    );
+    await instanceManager.updateInstance(instancePath, {
+      mods: instance.mods.map((mod) => {
+        if (mod.fileName === fileName) {
+          return { ...mod, fileName: `${mod.fileName}.disabled` };
+        }
+        return mod;
+      }),
+    });
+  },
 };
 instanceManager.loadInstances();
 

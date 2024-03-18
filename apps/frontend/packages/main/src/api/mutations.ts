@@ -14,6 +14,8 @@ import {
   deleteInstance,
   openInstance,
   fetchInstanceMods,
+  enableMod,
+  disableMod,
 } from "@slime-launcher/piston";
 import { inspect } from "util";
 
@@ -31,6 +33,8 @@ export const mutate = {
   updateInstance,
   openInstance,
   fetchInstanceMods,
+  enableMod,
+  disableMod,
 };
 
 type Event = {

@@ -6,7 +6,8 @@ import {
   registerMutationIpc,
   registerListeners,
 } from "./api";
-import { generateSettings } from "@slime-launcher/piston";
+import { generateSettings, modSourceManager } from "@slime-launcher/piston";
+import { modrinthSource } from "@slime-launcher/mod-sources";
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
@@ -47,6 +48,7 @@ async function createWindow() {
   registerQueryIpc();
   registerListeners();
   void generateSettings();
+  modSourceManager.registerModSource(modrinthSource);
 
   return browserWindow;
 }

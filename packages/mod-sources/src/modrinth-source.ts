@@ -57,7 +57,7 @@ export const modrinthSource: ModSource = {
       title: project.title,
       modId: project.id,
       fileId: version.id,
-      source: sourceId,
+      source: [sourceId],
       fileName: path.basename(filePath),
       sha512: await getHash(filePath, "sha512"),
     };

@@ -46,6 +46,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@slime-launcher/downloader": "workspace:*",
+    "@slime-launcher/mod-sources": "workspace:*",
     "@slime-launcher/piston": "workspace:*",
     "@supercharge/promise-pool": "^2.3.2",
     "@tanstack/react-query": "^4.2.3",
