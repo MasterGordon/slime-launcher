@@ -19,7 +19,7 @@
     "vitest": "^0.34.4"
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^0.29.0",
     "@slime-launcher/murmur2": "workspace:*",
     "axios-cache-interceptor": "^0.10.7"
   }
