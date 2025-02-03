@@ -28,7 +28,7 @@
     "drizzle-orm": "^0.28.6",
     "fast-deep-equal": "^3.1.3",
     "fs-extra": "^10.1.0",
-    "glob": "10.3.3",
+    "glob": "10.4.5",
     "minecraft-launcher-core": "^3.16.16",
     "msmc": "4.1.0",
     "semver": "^7.3.7",
