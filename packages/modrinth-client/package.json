@@ -21,6 +21,6 @@
   "dependencies": {
     "axios": "^0.27.2",
     "@slime-launcher/murmur2": "workspace:*",
-    "axios-cache-interceptor": "^0.10.7"
+    "axios-cache-interceptor": "^1.11.1"
   }
 }
