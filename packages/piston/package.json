@@ -23,7 +23,7 @@
     "@slime-launcher/minecraft-version-listing": "workspace:*",
     "@slime-launcher/unpack": "workspace:*",
     "@xmcl/mod-parser": "^3.3.3",
-    "axios": "^1.7.8",
+    "axios": "^1.12.0",
     "better-sqlite3": "^8.6.0",
     "drizzle-orm": "^0.28.6",
     "fast-deep-equal": "^3.1.3",
@@ -32,7 +32,7 @@
     "minecraft-launcher-core": "^3.16.16",
     "msmc": "4.1.0",
     "semver": "^7.3.7",
-    "zod": "^3.18.0",
+    "zod": "^3.22.3",
     "zod-to-json-schema": "^3.17.1"
   }
 }
