@@ -21,6 +21,6 @@
   "dependencies": {
     "adm-zip": "^0.5.9",
     "fs-extra": "^10.1.0",
-    "tar": "6.1.15"
+    "tar": "7.5.4"
   }
 }
